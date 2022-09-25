@@ -1,0 +1,125 @@
+.brand-name img {
+    max-height: 30px;
+}
+
+.banner-hl {
+    min-width: 320px;
+    min-height: 50px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.banner-hp {
+    min-width: 300px;
+    min-height: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.banner-sc {
+    min-width: 300px;
+    min-height: 250px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.precredit {
+    font-weight: bold;
+    color: red;
+}
+
+/**Zoom Effect*/
+@keyframes zoominoutsinglefeatured {
+    0% {
+        transform: scale(1, 1);
+    }
+
+    50% {
+        transform: scale(1.2, 1.2);
+    }
+
+    100% {
+        transform: scale(1, 1);
+    }
+}
+
+.infZoom {
+    animation: zoominoutsinglefeatured 20s infinite;
+}
+.scaleZoomIn{
+    scale: 120%;
+}
+
+/**END Zoom Effect*/
+
+/*Quote box style*/
+.half-overlay {
+    margin-top: -50vh;
+    margin-bottom: 45vh;
+    position: relative;
+}
+
+/*Quote box style*/
+.thirdquarter-overlay {
+    top: 70vh;
+}
+
+.quote-box {
+    background-color: #fff;
+    padding: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+    border-radius: 1em;
+    font-size: 1.5rem;
+}
+
+/*END Quote box style*/
+
+@supports (-webkit-text-stroke: 1px black) {
+    .outline {
+        -webkit-text-stroke: 1px black;
+        -webkit-text-fill-color: white;
+    }
+}
+
+
+/*Model slide*/
+.modal-dialog {
+    max-width: 90%;
+}
+
+.modal-dialog-slideout {
+    min-height: 100%;
+    margin: 0 0 0 auto;
+    background: #fff;
+    color: #000;
+}
+
+.modal.fade .modal-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(100%, 0)scale(1);
+    transform: translate(100%, 0)scale(1);
+}
+
+.modal.fade.show .modal-dialog.modal-dialog-slideout {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+    display: flex;
+    align-items: stretch;
+    -webkit-box-align: stretch;
+    height: 100%;
+}
+
+.modal.fade.show .modal-dialog.modal-dialog-slideout .modal-body {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.modal-dialog-slideout .modal-content {
+    border: 0;
+}
+
+.modal-dialog-slideout .modal-header,
+.modal-dialog-slideout .modal-footer {
+    height: 4rem;
+    display: block;
+}

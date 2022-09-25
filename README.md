@@ -1,2 +1,2 @@
 # playground
-Random small project during spare time
+Random small & useless project during spare time
