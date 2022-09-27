@@ -1,0 +1,165 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>POC Text to Speech</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <style>
+        .form-control {
+            border-bottom: 1px solid #ced4da;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+        }
+
+        .form-floating>.form-control {
+            height: calc(9.5rem + 2px) !important;
+        }
+
+        .btn-circle {
+            border-radius: 50px;
+            width: 4rem;
+            height: 4rem;
+        }
+
+
+
+
+        .wave {
+            height: 55px;
+            width: 55px;
+            fill: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: -4px;
+        }
+
+        .line_1 {
+            -webkit-animation: pulse 1s infinite;
+            animation: pulse 1s infinite;
+            -webkit-animation-delay: 0.15s;
+            animation-delay: 0.15s;
+        }
+
+        .line_2 {
+            -webkit-animation: pulse 1s infinite;
+            animation: pulse 1s infinite;
+            -webkit-animation-delay: 0.3s;
+            animation-delay: 0.3s;
+        }
+
+        .line_3 {
+            -webkit-animation: pulse 1s infinite;
+            animation: pulse 1s infinite;
+            -webkit-animation-delay: 0.45s;
+            animation-delay: 0.45s;
+        }
+
+        .line_4 {
+            -webkit-animation: pulse 1s infinite;
+            animation: pulse 1s infinite;
+            -webkit-animation-delay: 0.6s;
+            animation-delay: 0.6s;
+        }
+
+        .line_5 {
+            -webkit-animation: pulse 1s infinite;
+            animation: pulse 1s infinite;
+            -webkit-animation-delay: 0.75s;
+            animation-delay: 0.75s;
+        }
+
+        @-webkit-keyframes pulse {
+            0% {
+                transform: scaleY(1);
+                transform-origin: 50% 50%;
+            }
+
+            50% {
+                transform: scaleY(0.7);
+                transform-origin: 50% 50%;
+            }
+
+            100% {
+                transform: scaleY(1);
+                transform-origin: 50% 50%;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scaleY(1);
+                transform-origin: 50% 50%;
+            }
+
+            50% {
+                transform: scaleY(0.7);
+                transform-origin: 50% 50%;
+            }
+
+            100% {
+                transform: scaleY(1);
+                transform-origin: 50% 50%;
+            }
+        }
+    </style>
+</head>
+
+<body class="position-absolute h-100 w-100">
+    <main class="container-fluid">
+        <div class="row d-flex align-items-center align-content-center p-1 mx-auto my-5 position-relative">
+            <div class="col">
+                <h1 class="display-5 mb-5">POC Text to Speech</h1>
+                <div class="form-floating mb-5">
+                    <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea" rows="15"></textarea>
+                    <label for="floatingTextarea">Type your text</label>
+                </div>
+
+                <button id="play" type="button" class="btn btn-lg btn-circle btn-outline-success"><i
+                        class="bi-play"></i></button>
+
+                <div id="spectrum" class="btn btn-lg btn-circle btn-outline-success btn-primary d-none">
+                    <svg class="wave" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 38.05">
+                        <title>Audio Wave</title>
+                        <path class="line_1" data-name="Line 1"
+                            d="M0.91,15L0.78,15A1,1,0,0,0,0,16v6a1,1,0,1,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H0.91Z">
+                        </path>
+                        <path class="line_2" data-name="Line 2"
+                            d="M6.91,9L6.78,9A1,1,0,0,0,6,10V28a1,1,0,1,0,2,0s0,0,0,0V10A1,1,0,0,0,7,9H6.91Z">
+                        </path>
+                        <path class="line_3" data-name="Line 3"
+                            d="M12.91,0L12.78,0A1,1,0,0,0,12,1V37a1,1,0,1,0,2,0s0,0,0,0V1a1,1,0,0,0-1-1H12.91Z">
+                        </path>
+                        <path class="line_4" data-name="Line 4"
+                            d="M18.91,10l-0.12,0A1,1,0,0,0,18,11V27a1,1,0,1,0,2,0s0,0,0,0V11a1,1,0,0,0-1-1H18.91Z">
+                        </path>
+                        <path class="line_5" data-name="Line 5"
+                            d="M24.91,15l-0.12,0A1,1,0,0,0,24,16v6a1,1,0,0,0,2,0s0,0,0,0V16a1,1,0,0,0-1-1H24.91Z">
+                        </path>
+                    </svg>
+                </div>
+
+                <button id="stop" type="button" class="btn btn-lg btn-circle btn-outline-danger"><i
+                        class="bi-stop"></i></button>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-warning" id="msg" role="alert">Select available voices below!</div>
+
+                <select id="voices" class="form-select form-select-lg mb-3" aria-label=".form-select-lg">
+                    <option selected>Open available language</option>
+                </select>
+            </div>
+        </div>
+    </main>
+    <script src="tts.js"></script>
+</body>
+
+</html>
