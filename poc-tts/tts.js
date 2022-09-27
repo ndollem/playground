@@ -9,7 +9,7 @@ var msg = document.getElementById("msg"),
     speechTimer,
     predefinedText = {
         'en': 'Last week brought a relentless deluge of legal news for former President Donald J. Trump. All of it was bad, and some of it came courtesy of judges he or former Republican President Ronald Reagan had appointed.',
-        'id': 'Belum lama ini, peneliti di Kyushu University dan University of Tokyo Jepang menghadirkan metode baru untuk membuka smartphone, di mana pengguna hanya perlu bernapas.'
+        'id': 'Sugeng menjelaskan, awalnya ia akan memasuki gedung DPR melalui pintu depan. Namun, menurut informasi Pengamanan Dalam (Pamdal) DPR, pintu tersebut diperuntukkan khusus anggota Dewan. Adanya diskriminasi perlakuan dan sikap tidak hormat pimpinan DPR pada warga negara yang akan memasuki gedung DPR melalui pintu depan, ucap Sugeng. Padahal, saat hendak masuk ke Gedung DPR, dirinya sudah menunjukkan surat undangan dari DPR RI yang ditandatangani oleh Wakil Ketua DPR RI Korkesra Abdul Muhaimin Iskandar.'
     };
 
 initialize();
@@ -99,14 +99,8 @@ function play() {
         spectrum.classList.remove("d-none");
 
         // detection for android devices
-        const ua = navigator.userAgent.toLowerCase();
-        const isAndroid = ua.indexOf("android") > -1;
-
-        console.log(isAndroid);
-
-        if (!isAndroid) {
-            resumeInfinity(SPEECH);
-        }
+        msg.innerHTML = 'Utterance start speaking using '+SPEECH.voice.name;
+        resumeInfinity(SPEECH);
     }
 
     const clear = () => { clearTimeout(speechTimer) }
@@ -114,9 +108,10 @@ function play() {
     SPEECH.onerror = clear;
     //capture event when speech is ended
     SPEECH.onend = (event) => {
+        clear;
         btnPlay.classList.remove("d-none");
         spectrum.classList.add("d-none");
-        console.log(`Utterance has finished being spoken after ${event.elapsedTime} seconds.`);
+        msg.innerHTML = `Utterance has finished being spoken after ${event.elapsedTime} seconds.`;
     }
 }
 
@@ -125,13 +120,17 @@ const resumeInfinity = (target) => {
     // prevent memory-leak in case speech is deleted, while this is ongoing
     if (!target && speechTimer) { return clear() }
 
-    //immediatelly paused and resume every 5 second
+    //if(window.speechSynthesis.speaking==false){ clearTimeout(speechTimer) }
+
+    //immediatelly paused and resume every 10 second
     window.speechSynthesis.pause()
+    console.log('paused')
     window.speechSynthesis.resume()
+    console.log('resumed');
 
     speechTimer = setTimeout(function () {
-        resumeInfinity(target);
-    }, 5000)
+        if(window.speechSynthesis.speaking==true) resumeInfinity(target);
+    }, 10000)
 }
 /*--END workaround for chrome known bug that muted speech after 15 second--*/
 
