@@ -1,0 +1,94 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    
+    <style>
+        #menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 40px;
+            z-index: 70;
+            width: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        #menu li.active {
+            background: #666;
+            background: rgba(0,0,0, 0.5);
+            color: #fff;
+        }
+        #menu li {
+            display: inline-block;
+            margin: 10px;
+            color: #000;
+            background: #fff;
+            background: rgba(255,255,255, 0.5);
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul id="menu">
+		<li data-menuanchor="page1" class="active"><a href="#page1">Page 1</a></li>
+		<li data-menuanchor="page2" class=""><a href="#page2">Page 2</a></li>
+		<li data-menuanchor="page3"><a href="#page3">Page 3</a></li>
+		<li data-menuanchor="page4"><a href="#page4">Page 4</a></li>
+	</ul>
+
+    <div id="pagepiling">
+        <div class="section">
+            Some section
+            <h1 class="animate__animated animate__bounce">An animated element</h1>
+            <div class="animate-element delay5 fadeInUp">
+                <div class="title-mini text-primary">my services</div>
+                <h2 class="slide-title font-custom">
+                    Build your brand Build your brand and grow your business.
+                </h2>
+            </div>
+        </div>
+        <div class="section">
+            Some section
+            <div class="animate-element delay5 fadeInUp">
+                <div class="title-mini text-primary">my services</div>
+                <h2 class="slide-title font-custom">
+                    Build your brand Build your brand and grow your business.
+                </h2>
+            </div>
+        </div>
+        <div class="section">Some section</div>
+        <div class="section">Some section</div>
+    </div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#pagepiling').pagepiling({
+                sectionsColor: ['#bfda00', '#2ebe21', '#2C3E50', '#51bec4'],
+                onLeave: function (index, nextIndex, direction) {
+                    console.log('onLeave - index:' + index + ' nextIndex:' + nextIndex + ' direction:' + direction);
+                },
+                afterRender: function () {
+                    console.log('afterRender');
+                },
+                afterLoad: function (anchorLink, index) {
+                    console.log('afterLoad - anchorLink:' + anchorLink + " index:" + index);s
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
