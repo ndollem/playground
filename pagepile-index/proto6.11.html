@@ -1,0 +1,515 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=0">
+    <title>Pagepile Prototype with 11 pages</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css" />
+    <link rel="stylesheet" href="css/animate.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+        iframe{
+            position: relative !important;
+        }
+    </style>
+
+</head>
+
+<body class="body-piling">
+    <header id="header" class="header">
+        <div class="container-fluid">
+            <div class="brand">
+                <a href="#about" class="brand-name">
+                    <img src="../paralax-index/img/logo/merdeka.png">
+                </a>
+            </div>
+            <button class="nav-toggle-btn a-nav-toggle">
+                <span class="hamburger">
+                    <span class="top-bun"></span>
+                    <span class="meat"></span>
+                    <span class="bottom-bun"></span>
+                </span>
+            </button>
+            <div class="hide-menu a-nav-toggle"></div>
+            <div class="menu">
+                <div class="menu-lang">
+                    <a href="#" class="menu-lang-item">Trending</a>
+                    <a href="#" class="menu-lang-item">Cek Fakta</a>
+                </div>
+                <div class="menu-main" id="accordion">
+                    <ul id="menuMain">
+                        <li data-menuanchor="Homepage" class="active"><a href="#">Homepage</a></li>
+                        <li data-menuanchor="News"><a href="#">News</a></li>
+                        <li data-menuanchor="Crypto"><a href="#">Crypto</a></li>
+                        <li data-menuanchor="Saham"><a href="#">Ekonomi</a></li>
+                        <li data-menuanchor="Bisnis"><a href="#">Dunia</a></li>
+                        <li data-menuanchor="Bola"><a href="#">Khas</a></li>
+                        <li data-menuanchor="Showbiz"><a href="#">Histori</a></li>
+                        <li data-menuanchor="Tekno"><a href="#">Tekno</a></li>
+                        <li data-menuanchor="Foto"><a href="#">Foto</a></li>
+                        <li data-menuanchor="Video"><a href="#">Video</a></li>
+                    </ul>
+                </div>
+                <div class="menu-footer">
+                    <div class="menu-footer-contacts">
+                        <div class="menu-footer-phone"><a href="tel:+62217229681" class="phone-link">(021) 8379 52
+                                45</a></div>
+                        <div class="menu-footer-mail"><a href="#" class="mail-link"><span class="__cf_email__"
+                                    data-cfemail="">
+                                    redaksi.merdeka@kly.id
+                                    advertorial.merdeka@kly.id</span></a>
+                        </div>
+                    </div>
+                    <div class="menu-footer-copyright">© Kapanlagi Youniverse</div>
+                </div>
+                <div class="menu-ornament"></div>
+            </div>
+        </div>
+    </header>
+
+    <div id="pagepiling">
+
+        <div class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="animate-element delay1 fadeInUp">
+                            <h1 class="display-1 header-tag p-3 my-0">#Mobil listrik</h1>
+                        </div>
+                        <div class="slide-photo slide-photo-about animate-element delay4 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+
+                        <div
+                            class="animate-element delay7 fadeInUp mt-n3 mx-5 px-5 py-3 box-title box-title-purple raise-5">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+                        <div class="box-desc animate-element delay10 fadeInUp">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin &quot;demam&quot;, Wuling Motors mengajak
+                                sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta.
+                                Begini kesan kami!
+                            </p>
+                        </div>
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section ads-full">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+
+                        <!-- /36504930/dummy-adUnit/dfp_billboard -->
+                        <div class="text-center header-tag">Advertisement</div>
+                        <div id='div-gpt-ad-masthead'>
+                            <span style="line-height: 50vh; font-size: 3em; text-align: center; display: block; color: #ccc;">ADS HERE</span>
+                            <script>
+                                //googletag.cmd.push(function() { googletag.display('div-gpt-ad-masthead'); });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section purple-bg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="spacer-top"></div>
+
+                        <div class="animate-element delay4 fadeInUp mt-n3 px-5 py-3 box-title">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+                        <div class="slide-photo slide-photo-about animate-element delay7 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+
+                        <div class="box-desc animate-element delay10 fadeInUp">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin "demam" mobil listrik mininya di Jakarta, Wuling Motors mengajak sejumlah media
+                                termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta, kemarin (22/9).
+                            </p>
+                            
+                        </div>
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="slide-photo slide-photo-about animate-element delay4 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+
+                        <div class="box-desc animate-element delay10 fadeInUp">
+                            <div class="px-5 py-3">
+                                <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            </div>
+
+                            <p class="mx-5s px-5 fs-5">
+                                Bikin &quot;demam&quot; mobil listrik mininya di Jakarta, Wuling Motors mengajak
+                                sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta,
+                                kemarin (22/9). Begini kesan kami!
+                            </p>
+                        </div>
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="box-desc animate-element delay1 fadeInUp box-title ">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin &quot;demam&quot;, Wuling Motors mengajak
+                                sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta.
+                                Begini kesan kami!
+                            </p>
+                        </div>
+                        
+                        <div class="slide-photo slide-photo-about animate-element delay4 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+
+                        <div
+                            class="animate-element delay7 fadeInUp mt-n3 mx-5 px-5 py-3 box-title box-title-purple raise-5">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="animate-element delay7 fadeInUp px-5 py-3 box-title box-title-purple">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+                        <div class="slide-photo slide-photo-about animate-element delay4 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+                        <div class="box-desc animate-element delay10 fadeInUp">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin &quot;demam&quot;, Wuling Motors mengajak
+                                sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta.
+                                Begini kesan kami!
+                            </p>
+                        </div>
+
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section purple-bg">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="spacer-top"></div>
+                        <div class="animate-element delay1 fadeInUp d-none">
+                            <h1 class="display-1 header-tag p-3 my-0">#Mobil listrik</h1>
+                        </div>
+                        <div class="slide-photo slide-photo-about animate-element delay4 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+
+                        <div
+                            class="animate-element delay7 fadeInUp mt-n3 mx-5 px-5 py-3 box-title box-title-purple raise-5">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+                        <div class="box-desc animate-element delay10 fadeInUp">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin &quot;demam&quot;, Wuling Motors mengajak
+                                sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta.
+                                Begini kesan kami!
+                            </p>
+                        </div>
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section ads-hl">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="slide-photo slide-photo-about animate-element delay4 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+
+                        <div
+                            class="animate-element delay7 fadeInUp mt-n3 mx-5 px-5 py-3 box-title box-title-purple raise-2">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+
+                        <!-- /36504930/dummy-adUnit/dfp_m_headline -->
+                        <div class="animate-element delay10 fadeInUp">
+                            <div class="text-center header-tag mt-5">Advertisement</div>
+                            <div id='div-gpt-ad-headline' style='width: 320px; height: 100px; text-align: center;margin:0 auto;'>
+                                <script>
+                                    //googletag.cmd.push(function() { googletag.display('div-gpt-ad-halfpage'); });
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="animate-element delay1 fadeInUp px-5 py-3 box-title">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+                        <div class="slide-photo slide-photo-about animate-element delay4 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+                        <div class="box-desc animate-element delay10 fadeInUp">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin &quot;demam&quot;, Wuling Motors mengajak
+                                sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta.
+                                Begini kesan kami!
+                            </p>
+                        </div>
+
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section purple-bg ads-bf">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="spacer-top"></div>
+
+                        <div class="animate-element delay1 fadeInUp mt-n3 px-5 py-3 box-title">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+
+                        <!-- /36504930/dummy-adUnit/dfp_m_bottomfrm -->
+                        <div class="animate-element delay4 fadeInUp mt-5 mb-4">
+                            <div class="text-center header-tag">Advertisement</div>
+                            <div id='div-gpt-ad-bframe' class="" style='width: 320px; height: 100px; text-align: center;margin:0 auto;'>
+                                <script>
+                                    //googletag.cmd.push(function() { googletag.display('div-gpt-ad-halfpage'); });
+                                </script>
+                            </div>
+                        </div>
+
+                        <div class="box-desc animate-element delay7 fadeInUp">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin "demam" mobil listrik mininya di Jakarta, Wuling Motors mengajak sejumlah media
+                                termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta, kemarin (22/9).
+                            </p>
+                            <p class="mx-5 my-3 fs-5">
+                                Diproduksi di pabrik Cikarang, Bekasi, 7 unit Air ev tipe Long Range disediakan panitia.
+                            </p>
+                            <p class="mx-5 my-3 fs-5">
+                                Kami memulai test drive perdana dari Wuling Center di Pondok Indah, Jakarta Selatan
+                                dengan tujuan kawasan Pantai Indah Kapuk (PIK), Jakarta Utara.
+                            </p>
+                        </div>
+                        <div class="row box-cta animate-element delay10 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!----------->
+
+        <div class="section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="animate-element delay7 fadeInUp px-5 py-3 box-title">
+                            <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <h2 class="slide-title font-custom">
+                                Menjajal Mobil Listrik Mini Wuling Air ev sambil Keliling Jakarta
+                            </h2>
+                        </div>
+                        
+                        <div class="box-desc animate-element delay4 fadeInUp">
+                            <p class="mx-5 my-3 fs-5">
+                                Bikin &quot;demam&quot;, Wuling Motors mengajak
+                                sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta.
+                                Begini kesan kami!
+                            </p>
+                        </div>
+                        <div class="slide-photo slide-photo-about animate-element delay10 fadeInUp img-fw">
+                            <img class="img-fluid w-100" src="img/assets/dummy-img.jpg">
+                        </div>
+                        
+
+                        <div class="row box-cta animate-element delay13 fadeInUp px-5 fixed-bottom mb-5">
+                            <div class="col-8">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4 mx-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-1"></div>
+                            <div class="col-3 text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function () {
+            $('#pagepiling').pagepiling({
+                verticalCentered: false,
+                touchSensitivity: 200,
+                onLeave: function (index, nextIndex, direction) {
+                    console.log('onLeave - index:' + index + ' nextIndex:' + nextIndex + ' direction:' + direction);
+                },
+                afterRender: function () {
+                    console.log('afterRender');
+                },
+                afterLoad: function (anchorLink, index) {
+                    console.log('afterLoad - anchorLink:' + anchorLink + " index:" + index);
+                }
+            });
+
+            $('.a-nav-toggle').on('click', function () {
+                if ($('html').hasClass('body-menu-opened')) {
+                    $('html').removeClass('body-menu-opened').addClass('body-menu-close');
+                } else {
+                    $('html').addClass('body-menu-opened').removeClass('body-menu-close');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
