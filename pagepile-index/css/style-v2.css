@@ -82,13 +82,13 @@ Header
 
 @media (min-width: 768px) {
     .body-piling .brand {
-        top: 3.875rem;
+        top: 0.875rem;
     }
 }
 
 @media (min-width: 1400px) {
     .body-piling .brand {
-        left: 4.375rem;
+        left: 1.375rem;
     }
 }
 
@@ -110,13 +110,13 @@ Header
 
 @media (min-width: 768px) {
     .body-piling .nav-toggle-btn {
-        top: 4.1875rem;
+        top: 1.1875rem;
     }
 }
 
 @media (min-width: 1400px) {
     .body-piling .nav-toggle-btn {
-        right: 4.375rem;
+        right: 1.375rem;
     }
 }
 
@@ -532,6 +532,12 @@ html:not(.body-menu-opened) .hamburger:hover .bottom-bun {
 
 .box-title {
     border-top: 10px solid #B62283;
+    margin-right: 0rem;
+    margin-left: 0rem;
+}
+.box-title.raise-3, .box-title.raise-5{
+    margin-right: 3rem;
+    margin-left: 3rem;
 }
 .box-title-purple{
     background-color: #551575;
@@ -562,9 +568,79 @@ html:not(.body-menu-opened) .hamburger:hover .bottom-bun {
     position: relative;
 }
 
+.box-cta{
+    margin-left: 3rem;
+}
+
+.box-desc{
+    text-align: justify;
+    line-height: 2rem;
+}
+
+.box-quote.text-start{
+    line-height: 2.7em;
+    border-right: 5px solid #ffe421;
+}
+.box-quote.text-end{
+    line-height: 2.7em;
+    border-left: 5px solid #ffe421;
+}
+.box-quote blockquote{
+    font-size: 2em;
+}
+.badge.rounded-pill{
+    padding: 10px 12px;
+}
+a.slide-title{
+    text-decoration: none;
+    color:#000;
+}
+@media (min-width: 768px) {
+    .purple-bg{
+        background-color: #551575;
+    }
+    .raise-1, .raise-2, .raise-3, .raise-4, .raise-5, .raise-6{
+        margin-top: 0 !important;
+    }
+    .box-cta{
+        position: relative;
+        margin-left: 0;
+    }
+    .box-title{
+        margin-right: 0rem!important;
+        margin-left: 0rem!important;
+    }
+    .box-desc .px-5{
+        padding-right: 0rem!important;
+        padding-left: 0rem!important;
+    }
+}
+
+@media (min-width: 1400px) {
+    .purple-bg{
+        background-color: #551575;
+    }
+    .raise-1, .raise-2, .raise-3, .raise-4, .raise-5, .raise-6{
+        margin-top: 0 !important;
+    }
+    .box-cta{
+        position: relative;
+        margin-left: 0;
+    }
+    .box-title{
+        margin-right: 0rem!important;
+        margin-left: 0rem!important;
+    }
+    .box-desc .px-5{
+        padding-right: 0rem!important;
+        padding-left: 0rem!important;
+    }
+}
+
 /*Purple section*/
 .purple-bg{
     padding-top: 60px;
+    background-color: transparent;
 }
 .purple-bg .container{
     background-color: #551575;
@@ -574,12 +650,8 @@ html:not(.body-menu-opened) .hamburger:hover .bottom-bun {
 .section.purple-bg .container{
     padding-top: 0px !important;
 }
-/*.purple-bg .spacer-top{
-    min-height: 60px;
-    background-color: #fff;
-    margin-top: -60px;
-}*/
 .purple-bg .border-dark{
     color: #fff;
     border-color: #fff !important;
 }
+
