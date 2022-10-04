@@ -539,6 +539,16 @@ html:not(.body-menu-opened) .hamburger:hover .bottom-bun {
     margin-right: 3rem;
     margin-left: 3rem;
 }
+.purple-bg .box-title.raise-3 > .title-mini, 
+.purple-bg .box-title.raise-3 > .slide-title, 
+.purple-bg .box-title.raise-5 > .title-mini, 
+.purple-bg .box-title.raise-5 > .slide-title{
+    margin-right: 3rem;
+    margin-left: 3rem;
+}
+.purple-bg .box-desc{
+    margin-left: 3rem;
+}
 .box-title-purple{
     background-color: #551575;
     color: #fff;
@@ -614,6 +624,16 @@ a.slide-title{
         padding-right: 0rem!important;
         padding-left: 0rem!important;
     }
+    .purple-bg .box-title.raise-3 > .title-mini, 
+    .purple-bg .box-title.raise-3 > .slide-title, 
+    .purple-bg .box-title.raise-5 > .title-mini, 
+    .purple-bg .box-title.raise-5 > .slide-title{
+        margin-right: 0rem;
+        margin-left: 0rem;
+    }
+    .purple-bg .box-desc{
+        margin-left: 0rem;
+    }
 }
 
 @media (min-width: 1400px) {
@@ -634,6 +654,16 @@ a.slide-title{
     .box-desc .px-5{
         padding-right: 0rem!important;
         padding-left: 0rem!important;
+    }
+    .purple-bg .box-title.raise-3 > .title-mini, 
+    .purple-bg .box-title.raise-3 > .slide-title, 
+    .purple-bg .box-title.raise-5 > .title-mini, 
+    .purple-bg .box-title.raise-5 > .slide-title{
+        margin-right: 0rem;
+        margin-left: 0rem;
+    }
+    .purple-bg .box-desc{
+        margin-left: 0rem;
     }
 }
 
