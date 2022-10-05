@@ -27,6 +27,7 @@
     <link rel="dns-prefetch" href="https://tpc.googlesyndication.com" />
     <link rel="dns-prefetch" href="https://www.googletagservices.com" />
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://cdn.taboola.com" />
 
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://cdns.klimg.com" crossorigin="anonymous" />
@@ -110,7 +111,7 @@
             googletag.defineSlot('/36504930/dummy-adUnit/dfp_m_headline', [320, 100], 'div-gpt-ad-headline').addService(googletag.pubads());
             googletag.defineSlot('/36504930/dummy-adUnit/dfp_m_bottomfrm', [320, 50], 'div-gpt-ad-bframe').addService(googletag.pubads());
 
-            googletag.defineOutOfPageSlot('/36504930/dummy-adUnit/dfp_billboard', 'div-gpt-ad-masthead2').addService(googletag.pubads());
+            //googletag.defineOutOfPageSlot('/36504930/dummy-adUnit/dfp_billboard', 'div-gpt-ad-masthead2').addService(googletag.pubads());
             googletag.defineSlot('/36504930/dummy-adUnit/dfp_sc1', [300, 250], 'div-gpt-ad-showcase2').addService(googletag.pubads());
             googletag.defineSlot('/36504930/dummy-adUnit/dfp_m_headline', [320, 100], 'div-gpt-ad-headline2').addService(googletag.pubads());
             googletag.defineSlot('/36504930/dummy-adUnit/dfp_m_bottomfrm', [320, 50], 'div-gpt-ad-bframe2').addService(googletag.pubads());
@@ -125,12 +126,41 @@
             googletag.enableServices();
         });
     </script>
+
+    <script type="text/javascript">
+        window._taboola = window._taboola || [];
+        _taboola.push({ article: "auto" });
+
+        var isTaboolaLibLoaded = false;
+        document.addEventListener('scroll', function () {
+            if (!isTaboolaLibLoaded) {
+                isTaboolaLibLoaded = true;
+                !(function (e, f, u, i) {
+                    if (!document.getElementById(i)) {
+                        e.async = 1;
+                        e.src = u;
+                        e.id = i;
+                        f.parentNode.insertBefore(e, f);
+                    }
+                })(
+                    document.createElement("script"),
+                    document.getElementsByTagName("script")[0],
+                    "//cdn.taboola.com/libtrc/emtekdigital-merdeka/loader.js",
+                    "tb_loader_script"
+                );
+            }
+        }, false);
+
+        if (window.performance && typeof window.performance.mark == "function") {
+            window.performance.mark("tbl_ic");
+        }
+    </script>
 </head>
 
 <body class="body-piling">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K5DTWRM" height="0" width="0"
-        style="display:none;visibility:hidden"></iframe></noscript>
+            style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <header id="header" class="header">
@@ -293,11 +323,11 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="box-desc animate-element delay4 fadeInUp">
-                            <div class="px-5 py-3">
-                                <div class="title-mini mb-3">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
+                            <div class="px-5 py-2">
+                                <div class="title-mini mb-2">Teknologi <span class="mx-2">|</span> 26 Sept 2022</div>
                             </div>
 
-                            <p class="px-5 my-3 fs-5">
+                            <p class="px-5 my-2 fs-5">
                                 Bikin &quot;demam&quot;, Wuling Motors mengajak
                                 sejumlah media termasuk Merdeka.com menjajal Wuling Air ev untuk keliling kota Jakarta.
                                 Begini kesan kami!
@@ -644,12 +674,24 @@
                     <div class="col-lg-4">
                         <!-- /36504930/dummy-adUnit/dfp_billboard -->
                         <div class="text-center header-tag">Advertisement</div>
-                        <div id='div-gpt-ad-masthead2'>
+                        <!--div id='div-gpt-ad-masthead2'>
                             <span
                                 style="line-height: 50vh; font-size: 3em; text-align: center; display: block; color: #ccc;">ADS
                                 HERE</span>
                             <script>
-                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-masthead2'); });
+                                googletag.cmd.push(function () { googletag.display('div-gpt-ad-masthead2'); });
+                            </script>
+                        </div-->
+                        <div class="box-desc animate-element delay4 fadeInUp">
+                            <div id="taboola-mid-article-thumbnails"></div>
+                            <script type="text/javascript">
+                                window._taboola = window._taboola || [];
+                                _taboola.push({
+                                    mode: "thumbnails-mid-a",
+                                    container: "taboola-mid-article-thumbnails",
+                                    placement: "Mid Article Thumbnails",
+                                    target_type: "mix",
+                                });
                             </script>
                         </div>
                     </div>
@@ -1069,7 +1111,7 @@
                                 style="line-height: 50vh; font-size: 3em; text-align: center; display: block; color: #ccc;">ADS
                                 HERE</span>
                             <script>
-                                googletag.cmd.push(function() { googletag.display('div-gpt-ad-masthead3'); });
+                                googletag.cmd.push(function () { googletag.display('div-gpt-ad-masthead3'); });
                             </script>
                         </div>
                     </div>
@@ -1495,30 +1537,30 @@
 
 
 
-<!-- Google Code for Remarketing Tag -->
-<script type="text/javascript">
-    /* <![CDATA[ */
-    var google_conversion_id = 988969180;
-    var google_custom_params = window.google_tag_params;
-    var google_remarketing_only = true;
+    <!-- Google Code for Remarketing Tag -->
+    <script type="text/javascript">
+        /* <![CDATA[ */
+        var google_conversion_id = 988969180;
+        var google_custom_params = window.google_tag_params;
+        var google_remarketing_only = true;
     /* ]]> */
-</script>
-<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
-<noscript>
-    <div style="display:inline;">
-        <img height="1" width="1" style="border-style:none;" alt=""
-            src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/988969180/?value=0&amp;guid=ON&amp;script=0" />
-    </div>
-</noscript>
-<!-- Google Code for Remarketing Tag -->
+    </script>
+    <script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js"></script>
+    <noscript>
+        <div style="display:inline;">
+            <img height="1" width="1" style="border-style:none;" alt=""
+                src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/988969180/?value=0&amp;guid=ON&amp;script=0" />
+        </div>
+    </noscript>
+    <!-- Google Code for Remarketing Tag -->
 
-<!-- Facebook Pixel Code -->
-<script>
-    setTimeout(function () { var e, t, n, o, a, c; e = window, t = document, n = "script", e.fbq || (o = e.fbq = function () { o.callMethod ? o.callMethod.apply(o, arguments) : o.queue.push(arguments) }, e._fbq || (e._fbq = o), o.push = o, o.loaded = !0, o.version = "2.0", o.queue = [], (a = t.createElement(n)).async = !0, a.src = "https://connect.facebook.net/en_US/fbevents.js", (c = t.getElementsByTagName(n)[0]).parentNode.insertBefore(a, c)), fbq("init", "1283407325068417"), fbq("track", "PageView") }, 3500);
-</script>
-<noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=1283407325068417&ev=PageView&noscript=1" /></noscript>
-<!-- End Facebook Pixel Code -->
+    <!-- Facebook Pixel Code -->
+    <script>
+        setTimeout(function () { var e, t, n, o, a, c; e = window, t = document, n = "script", e.fbq || (o = e.fbq = function () { o.callMethod ? o.callMethod.apply(o, arguments) : o.queue.push(arguments) }, e._fbq || (e._fbq = o), o.push = o, o.loaded = !0, o.version = "2.0", o.queue = [], (a = t.createElement(n)).async = !0, a.src = "https://connect.facebook.net/en_US/fbevents.js", (c = t.getElementsByTagName(n)[0]).parentNode.insertBefore(a, c)), fbq("init", "1283407325068417"), fbq("track", "PageView") }, 3500);
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+            src="https://www.facebook.com/tr?id=1283407325068417&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
 </body>
 
 </html>
