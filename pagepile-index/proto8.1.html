@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#ce0000">
     <meta name="msapplication-navbutton-color" content="#ce0000">
     <meta name="apple-mobile-web-app-status-bar-style" content="#ce0000">
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    <!--meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests"-->
     <meta http-equiv='cache-control' content='no-cache'> 
     <meta http-equiv='expires' content='0'> 
     <meta http-equiv='pragma' content='no-cache'>
@@ -384,6 +384,39 @@
                 </div>
             </div>
         </section>
+
+        <section class="section video-vertical" id="video-vertical" data-src="https://enamplus.com/embed/n3k2l8y7?autoplay=true">
+            <div class="container px-0">
+                <div class="row justify-content-center flex-row-reverse">
+                    <div class="col-lg-4">
+                        <div class="animate-element delay1 fadeInUp mt-n3 px-5 py-3 box-title d-none">
+                            <div class="title-mini mb-3">Liputan6.com <span class="mx-2">|</span> 05 Oktober 2022</div>
+                            <h2 class="slide-title font-custom">
+                                VIDEO: Potret Tampan Al dan El Main Bulu Tangkis
+                            </h2>
+                        </div>
+                        
+                    </div>
+                    <div class="col-lg-4">
+
+                        <div class="box-desc animate-element delay4 fadeInUp box-title ">
+                            <iframe class="vidio-embed enamplus-video" src="" scrolling="no" frameborder="0" allowfullscreen></iframe>
+                        </div>
+
+                        <div class="box-cta animate-element delay13 fadeInUp mt-5 fixed-bottom mb-5">
+                            <div class="col-8 float-start">
+                                <a href="#" class="btn border border-3 border-dark w-100 fs-4">Selengkapnya</a>
+                            </div>
+                            <div class="col-3 float-end text-center">
+                                <span class=""><i class="bi bi-heart fs-1"></i><br />suka</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4"></div>
+                </div>
+            </div>
+        </section>
+        
 
         <section class="section">
             <div class="container px-0">
@@ -1518,9 +1551,19 @@
 
             const onLeave = function (entry) {
                 console.log(entry.id + ' leaving')
+                if(entry.id=='video-vertical'){
+                    let videoEl = document.getElementById("video-vertical").querySelector(".vidio-embed")
+                    videoEl.removeAttribute("src", '');
+
+                }
             }
             const onEnter = function (entry) {
                 console.log(entry.id + ' enter')
+                if(entry.id=='video-vertical'){
+                    let videoEl = document.getElementById("video-vertical").querySelector(".vidio-embed")
+                    let videoSrc = document.getElementById("video-vertical").getAttribute('data-src')
+                    videoEl.setAttribute("src", videoSrc);
+                }
             }
 
         });

@@ -685,3 +685,7 @@ a.slide-title{
     border-color: #fff !important;
 }
 
+.video-vertical .vidio-embed{
+    aspect-ratio: 2/3;
+    width: 100%;
+}
