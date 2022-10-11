@@ -301,3 +301,20 @@ a.slide-title{
     font-style: italic;
     margin: 0 !important;
 }
+
+.img-full{
+    background-size: cover !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 95vh;
+}
+.img-full .box-title{
+    bottom: 15vh;
+    position: absolute;
+    color: #fff;
+    width: 100%;
+}
+.img-full .box-title a{
+    text-decoration: none;
+    color: #fff;
+}

@@ -689,3 +689,20 @@ a.slide-title{
     aspect-ratio: 2/3;
     width: 100%;
 }
+
+.img-full{
+    background-size: cover !important;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 95vh;
+}
+.img-full .box-title{
+    bottom: 15vh;
+    position: absolute;
+    color: #fff;
+    width: 100%;
+}
+.img-full .box-title a{
+    text-decoration: none;
+    color: #fff;
+}
