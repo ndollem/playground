@@ -1,0 +1,313 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor demo</title>
+    <link async href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link async rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://ndollem.github.io/playground/pagepile-index/css/animate.min.css">
+    <link rel="stylesheet" href="css/fe-style.css">
+    <link rel="stylesheet" href="css/style-mobile.css">
+    <style>
+
+    </style>
+</head>
+
+<body class="body-piling">
+    <header id="header" class="header">
+        <div class="container-fluid">
+            <div class="brand">
+                <a href="#about" class="brand-name">
+                    <img src="https://ndollem.github.io/playground/paralax-index/img/logo/merdeka.png">
+                </a>
+            </div>
+            <button class="nav-toggle-btn a-nav-toggle">
+                <span class="hamburger">
+                    <span class="top-bun"></span>
+                    <span class="meat"></span>
+                    <span class="bottom-bun"></span>
+                </span>
+            </button>
+            <div class="hide-menu a-nav-toggle"></div>
+            <div class="menu">
+                <div class="menu-lang">
+                    <a href="#" class="menu-lang-item">Trending</a>
+                    <a href="#" class="menu-lang-item">Cek Fakta</a>
+                </div>
+                <div class="menu-main" id="accordion">
+                    <ul id="menuMain">
+                        <li data-menuanchor="Homepage" class="active"><a href="#">Homepage</a></li>
+                        <li data-menuanchor="News"><a href="#">News</a></li>
+                        <li data-menuanchor="Crypto"><a href="#">Crypto</a></li>
+                        <li data-menuanchor="Saham"><a href="#">Ekonomi</a></li>
+                        <li data-menuanchor="Bisnis"><a href="#">Dunia</a></li>
+                        <li data-menuanchor="Bola"><a href="#">Khas</a></li>
+                        <li data-menuanchor="Showbiz"><a href="#">Histori</a></li>
+                        <li data-menuanchor="Tekno"><a href="#">Tekno</a></li>
+                        <li data-menuanchor="Foto"><a href="#">Foto</a></li>
+                        <li data-menuanchor="Video"><a href="#">Video</a></li>
+                    </ul>
+                </div>
+                <div class="menu-footer">
+                    <div class="menu-footer-contacts">
+                        <div class="menu-footer-phone"><a href="tel:+62217229681" class="phone-link">(021) 8379 52
+                                45</a></div>
+                        <div class="menu-footer-mail"><a href="#" class="mail-link"><span class="__cf_email__"
+                                    data-cfemail="">
+                                    redaksi.merdeka@kly.id
+                                    advertorial.merdeka@kly.id</span></a>
+                        </div>
+                    </div>
+                    <div class="menu-footer-copyright">&copy; Kapanlagi Youniverse</div>
+                </div>
+                <div class="menu-ornament"></div>
+            </div>
+        </div>
+    </header>
+
+    <header id="header-template" class="header">
+        <div class="container-fluid">
+            <div class="hide-menu a-template-toggle"></div>
+            <div class="menu">
+                <div class="menu-lang">
+                    <a href="#menu-template-photo" class="menu-lang-item menu-template-type">Photo</a>
+                    <a href="#menu-template-text" class="menu-lang-item menu-template-type">Text</a>
+                    <a href="#menu-template-video" class="menu-lang-item menu-template-type">Video</a>
+                    <a href="#menu-template-special" class="menu-lang-item menu-template-type">Special</a>
+                </div>
+                <div class="menu-main menu-main-template">
+                    <ul id="menu-template-photo">
+                        <li data-source="text-foto-1" class="template-item"
+                            style="background-image: url('img/text-foto-1.png');"></li>
+                        <li data-source="text-foto-2" class="template-item"
+                            style="background-image: url('img/text-foto-2.png');"></li>
+                        <li data-source="text-foto-3" class="template-item"
+                            style="background-image: url('img/text-foto-3.png');"></li>
+                        <li data-source="text-foto-4" class="template-item"
+                            style="background-image: url('img/text-foto-4.png');"></li>
+                    </ul>
+                    <ul id="menu-template-text">
+                        <li data-source="text-1" class="template-item" style="background-image: url('img/text-1.png');">
+                        </li>
+                        <li data-source="text-2" class="template-item" style="background-image: url('img/text-2.png');">
+                        </li>
+                        <li data-source="text-3" class="template-item" style="background-image: url('img/text-3.png');">
+                        </li>
+                        <li data-source="text-4" class="template-item" style="background-image: url('img/text-4.png');">
+                        </li>
+                        <li data-source="text-5" class="template-item" style="background-image: url('img/text-5.png');">
+                        </li>
+                        <li data-source="text-6" class="template-item" style="background-image: url('img/text-6.png');">
+                        </li>
+                        <li data-source="text-7" class="template-item" style="background-image: url('img/text-7.png');">
+                        </li>
+                        <li data-source="text-8" class="template-item" style="background-image: url('img/text-8.png');">
+                        </li>
+                    </ul>
+                    <ul id="menu-template-video">    </ul>
+                    <ul id="menu-template-special">    </ul>
+                </div>
+                <div class="menu-footer">
+                    <div class="menu-footer-contacts">
+                        <div class="menu-footer-phone"></div>
+                        <div class="menu-footer-mail"></div>
+                    </div>
+                    <div class="menu-footer-copyright">&copy; Kapanlagi Youniverse</div>
+                </div>
+                <div class="menu-ornament"></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="section-container">
+        <div id="feed-form" class="feed-form">
+            <!-- placement for new feed -->
+        </div>
+
+        <section class="section active">
+            <div class="container px-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-4 feed-item">
+                        <div class="text-center new-feed-btn-cont">
+                            <p>Click to add new Feed from the templates collection</p>
+                            <button id="add-feed" type="button"
+                                class="a-template-toggle btn btn-info rounded-circle p-4 fs-1 fw-bold"><i
+                                    class="bi-plus"></i></button>
+                        </div>
+
+                        <div
+                            class="text-center new-feed-save-cont mt-5 mx-3 px-2 py-5 bg-success bg-opacity-10 rounded d-none">
+                            <p>
+                                You can click <span class="fs-1 mx-1">+</span> to add more Feed as a sequenced feed,
+                                <br />
+                                or save your current feed
+                            </p>
+                            <input class="form-control mb-3" type="text" placeholder="type the feed title (optional)">
+                            <button id="save-feed" type="button" class="btn btn-primary btn-lg">SAVE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Modal -->
+        <div class="modal fade" id="CTAModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-sm">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <input class="form-control" type="text" id="input-url" placeholder="Type url">
+                        <input type="hidden" id="active-section-num" value="" /> 
+                    </div>
+                    <div class="modal-footer border-0 pt-0">
+                        <button type="button" class="btn btn-primary" id="add-url">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="ckeditor-build/ckeditor.js"></script>
+    <script>
+        $(document).ready(function () {
+            /* toggle navigation button */
+            $('.a-nav-toggle').on('click', function () {
+                if ($('#header').hasClass('body-menu-opened')) {
+                    $('#header').removeClass('body-menu-opened').addClass('body-menu-close');
+                } else {
+                    $('#header').addClass('body-menu-opened').removeClass('body-menu-close');
+                }
+            });
+
+            /* toggle template feed menu */
+            $('.a-template-toggle').on('click', function () {
+                if ($('#header-template').hasClass('body-menu-opened')) {
+                    $('#header-template').removeClass('body-menu-opened').addClass('body-menu-close');
+                } else {
+                    $('#header-template').addClass('body-menu-opened').removeClass('body-menu-close');
+                }
+            });
+
+            
+            //insert new feed item
+            $('.template-item').on('click', function () {
+                $.ajax({
+                    url: "templates/" + this.getAttribute('data-source') + '.html',
+                    success: function (result) {
+                        //add new feed html structure into feed container
+                        $('#feed-form').append(result);
+
+                        //close template list menus
+                        $('#header-template').removeClass('body-menu-opened').addClass('body-menu-close');
+
+                        //assign section ID based on order
+                        var sectionNum = $('#feed-form section').length;
+                        $('#feed-form section:last').attr("id", "section-" + sectionNum);
+
+                        //focus view into new added feed
+                        document.getElementById("section-" + sectionNum).scrollIntoView();
+
+                        //update CTA button id
+                        $('#feed-form #cta-switcher').attr("data-num", sectionNum);
+                        $('#feed-form #cta-switcher').attr("id", "section-" + sectionNum+'-cta-switcher');
+                        $('#section-' + sectionNum + ' .cta-url').attr("name", "section-" + sectionNum+'-cta-url');
+                        $('.cta-switcher').change(function() {
+                            $('#input-url').val('');
+                            if(this.checked) {
+                                $('#active-section-num').val(this.getAttribute('data-num'));
+                                $('#CTAModal').modal('show');
+                            }else{
+                                $('#section-' + this.getAttribute('data-num') +' .box-cta label').html('CTA')
+                            }
+                        });
+
+                        // Modal hidden event fired
+                        $('#CTAModal').on('hidden.bs.modal', function () {
+                            //check for the active section
+                            var activeSectionNum = $('#active-section-num').val();
+                            //unchecked CTA button on active section, unless it filled with url
+                            if($('#section-' + activeSectionNum +' .box-cta label').html() == 'CTA'){
+                                $('#section-' + activeSectionNum +'-cta-switcher').prop('checked',false);
+                            }
+                        });
+
+                        //update CTA url on section
+                        $('#add-url').on('click', () =>{
+                            //check for the active section
+                            var activeSectionNum = $('#active-section-num').val();
+                            //update label CTA with url
+                            if($('#input-url').val()){
+                                $('#section-' + activeSectionNum +' .box-cta label').html($('#input-url').val())
+                                $('#section-' + activeSectionNum +' .cta-url').val($('#input-url').val())
+                                $('#CTAModal').modal('hide');
+                            }
+                        });
+
+                        //loop for all identified ckeditor element
+                        $('#section-' + sectionNum + ' .ckeditor').each(function (i, obj) {
+
+                            //check this element is assigned for which textarea ?
+                            var assignTextarea = obj.getAttribute('data-textarea');
+
+
+                            //update attribute for textarea
+                            $('#section-' + sectionNum + ' #' + assignTextarea).attr('name', 'section-' + sectionNum + '-' + assignTextarea);
+                            $('#section-' + sectionNum + ' #' + assignTextarea).attr('id', 'section-' + sectionNum + '-' + assignTextarea);
+
+                            //activate editor
+                            BalloonEditor.create(obj, {
+                                placeholder: obj.getAttribute('placeholder')
+                            }).catch(error => { console.error(error); });
+                        });
+
+                        //listener for upload file
+                        if ($('#section-' + sectionNum + ' input[type="file"]').length > 0) {
+
+                            var imgUploadName = $('#section-' + sectionNum + ' input[type="file"]').attr('name');
+                            //updating the label
+                            $('#section-' + sectionNum + ' label[for="' + imgUploadName + '"]').attr('for', 'section-' + sectionNum + '-' + imgUploadName);
+                            //updating the input file element name
+                            $('#section-' + sectionNum + ' input[type="file"]').attr('name', 'section-' + sectionNum + '-' + imgUploadName);
+
+                            $('#section-' + sectionNum + ' input[type="file"]')[0].addEventListener('change', function () {
+
+                                //create preview once file is selected
+                                var reader = new FileReader();
+                                reader.onload = function () {
+                                    $('#section-' + sectionNum + ' .slide-photo').css('background-image', 'url(' + reader.result + ')');
+                                }
+                                reader.readAsDataURL(this.files[0]);
+
+                            })
+                        }
+
+
+                        //update add feed slide content
+                        $('.new-feed-save-cont').removeClass('d-none');
+                        $('.new-feed-btn-cont').css('margin-top', '25vh');
+
+                    }
+                });
+            });
+
+
+            $('#save-feed').on('click', function () {
+                //do everything to save feed form first here
+
+                //once done saving, clean up and reset
+                $('#feed-form').html('');
+                $('.new-feed-save-cont').addClass('d-none');
+                $('.new-feed-btn-cont').css('margin-top', '35vh');
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

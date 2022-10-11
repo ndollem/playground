@@ -1,0 +1,104 @@
+.slide-cont {
+    border-bottom: 2px solid #fff;
+}
+
+#slide-form {
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
+.slide-input .alert {
+    font-size: 0.7rem;
+}
+
+.slide-item {
+    background-color: #fbfbfb;
+    border: 1px solid #e0e0e0;
+    aspect-ratio: 2/3;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    display: grid;
+    place-content: center;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+    background-color: #fbfbfb;
+    border: 1px solid #e0e0e0;
+    opacity: 0.5;
+}
+
+
+.dropzone {
+    background-color: #bfe4ff;
+    border: dashed 4px transparent;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.drop-active {
+    border-color: #aaa;
+}
+
+.drop-target {
+    background-color: #29e;
+    border-color: #fff;
+    border-style: solid;
+}
+
+.slide-item.dragable {
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: none;
+}
+
+.drag-drop.can-drop {
+    color: #000;
+    background-color: #4e4;
+}
+
+/* loading icon */
+@keyframes loading-icon {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.loading-icon div {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    border: 3px solid #85a2b6;
+    border-top-color: transparent;
+    border-radius: 50%;
+}
+
+.loading-icon div {
+    animation: loading-icon 1s linear infinite;
+    top: 50%;
+    left: 50%;
+}
+
+.infinite-loading-box {
+    width: 2rem;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+}
+
+.loading-icon {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+    /* see note above */
+}
+
+.loading-icon div {
+    box-sizing: content-box;
+}
