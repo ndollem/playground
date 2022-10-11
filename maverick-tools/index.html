@@ -110,8 +110,12 @@
                         <li data-source="text-8" class="template-item" style="background-image: url('img/text-8.png');">
                         </li>
                     </ul>
-                    <ul id="menu-template-video">    </ul>
-                    <ul id="menu-template-special">    </ul>
+                    <ul id="menu-template-video">
+                        <li data-source="" class="template-item">not avail</li>
+                    </ul>
+                    <ul id="menu-template-special">
+                        <li data-source="" class="template-item">not avail</li>
+                    </ul>
                 </div>
                 <div class="menu-footer">
                     <div class="menu-footer-contacts">
@@ -138,7 +142,8 @@
                             <p>Click to add new Feed from the templates collection</p>
                             <button id="add-feed" type="button"
                                 class="a-template-toggle btn btn-info rounded-circle p-4 fs-1 fw-bold"><i
-                                    class="bi-plus"></i></button>
+                                    class="bi-plus"></i>
+                            </button>
                         </div>
 
                         <div
@@ -148,7 +153,31 @@
                                 <br />
                                 or save your current feed
                             </p>
-                            <input class="form-control mb-3" type="text" placeholder="type the feed title (optional)">
+                            <input class="form-control mb-1" type="text" placeholder="type the feed title (optional)">
+                            <div class="accordion mb-2" id="accordionExample">
+                                
+                                <div class="accordion-item">
+                                    <h2 class="accordion-header" id="headingAdvance">
+                                        <button class="accordion-button collapsed p-2 fw-bold" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseAdvance"
+                                            aria-expanded="false" aria-controls="collapseAdvance">
+                                            Advance
+                                        </button>
+                                    </h2>
+                                    <div id="collapseAdvance" class="accordion-collapse collapse"
+                                        aria-labelledby="headingAdvance" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <input class="form-control mb-1" type="text" placeholder="Category">
+                                            <input class="form-control mb-1" type="text" placeholder="Tags">
+                                            <div class="input-group mb-3">
+                                                <input class="form-control" type="text" placeholder="Date publich">
+                                                <span class="input-group-text"><i class="bi bi-calendar-date"></i></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                            </div>
                             <button id="save-feed" type="button" class="btn btn-primary btn-lg">SAVE</button>
                         </div>
                     </div>
@@ -162,7 +191,7 @@
                 <div class="modal-content">
                     <div class="modal-body">
                         <input class="form-control" type="text" id="input-url" placeholder="Type url">
-                        <input type="hidden" id="active-section-num" value="" /> 
+                        <input type="hidden" id="active-section-num" value="" />
                     </div>
                     <div class="modal-footer border-0 pt-0">
                         <button type="button" class="btn btn-primary" id="add-url">Add</button>
@@ -173,7 +202,9 @@
     </main>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js"
+        integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk"
+        crossorigin="anonymous"></script>
     <script src="ckeditor-build/ckeditor.js"></script>
     <script>
         $(document).ready(function () {
@@ -195,7 +226,7 @@
                 }
             });
 
-            
+
             //insert new feed item
             $('.template-item').on('click', function () {
                 $.ajax({
@@ -216,15 +247,15 @@
 
                         //update CTA button id
                         $('#feed-form #cta-switcher').attr("data-num", sectionNum);
-                        $('#feed-form #cta-switcher').attr("id", "section-" + sectionNum+'-cta-switcher');
-                        $('#section-' + sectionNum + ' .cta-url').attr("name", "section-" + sectionNum+'-cta-url');
-                        $('.cta-switcher').change(function() {
+                        $('#feed-form #cta-switcher').attr("id", "section-" + sectionNum + '-cta-switcher');
+                        $('#section-' + sectionNum + ' .cta-url').attr("name", "section-" + sectionNum + '-cta-url');
+                        $('.cta-switcher').change(function () {
                             $('#input-url').val('');
-                            if(this.checked) {
+                            if (this.checked) {
                                 $('#active-section-num').val(this.getAttribute('data-num'));
                                 $('#CTAModal').modal('show');
-                            }else{
-                                $('#section-' + this.getAttribute('data-num') +' .box-cta label').html('CTA')
+                            } else {
+                                $('#section-' + this.getAttribute('data-num') + ' .box-cta label').html('CTA')
                             }
                         });
 
@@ -233,19 +264,19 @@
                             //check for the active section
                             var activeSectionNum = $('#active-section-num').val();
                             //unchecked CTA button on active section, unless it filled with url
-                            if($('#section-' + activeSectionNum +' .box-cta label').html() == 'CTA'){
-                                $('#section-' + activeSectionNum +'-cta-switcher').prop('checked',false);
+                            if ($('#section-' + activeSectionNum + ' .box-cta label').html() == 'CTA') {
+                                $('#section-' + activeSectionNum + '-cta-switcher').prop('checked', false);
                             }
                         });
 
                         //update CTA url on section
-                        $('#add-url').on('click', () =>{
+                        $('#add-url').on('click', () => {
                             //check for the active section
                             var activeSectionNum = $('#active-section-num').val();
                             //update label CTA with url
-                            if($('#input-url').val()){
-                                $('#section-' + activeSectionNum +' .box-cta label').html($('#input-url').val())
-                                $('#section-' + activeSectionNum +' .cta-url').val($('#input-url').val())
+                            if ($('#input-url').val()) {
+                                $('#section-' + activeSectionNum + ' .box-cta label').html($('#input-url').val())
+                                $('#section-' + activeSectionNum + ' .cta-url').val($('#input-url').val())
                                 $('#CTAModal').modal('hide');
                             }
                         });
@@ -291,7 +322,7 @@
 
                         //update add feed slide content
                         $('.new-feed-save-cont').removeClass('d-none');
-                        $('.new-feed-btn-cont').css('margin-top', '25vh');
+                        $('.new-feed-btn-cont').css('margin-top', '20vh');
 
                     }
                 });
