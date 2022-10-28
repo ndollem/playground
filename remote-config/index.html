@@ -51,13 +51,13 @@
             // Your web app's Firebase configuration
             // For Firebase JS SDK v7.20.0 and later, measurementId is optional
             const firebaseConfig = {
-                apiKey: "AIzaSyCLm01sBd7KezRtjisGehIx3WPRyPWZWio",
-                authDomain: "kly-firebase.firebaseapp.com",
-                projectId: "kly-firebase",
-                storageBucket: "kly-firebase.appspot.com",
-                messagingSenderId: "990064158101",
-                appId: "1:990064158101:web:ed3692e315b7e64a1b829c",
-                measurementId: "G-8YB678PFJX"
+                apiKey: "AIzaSyDGt_EBulRPrTRA5fyA8mTJy4oyu-bxXYE",
+                authDomain: "kly-all-vertical.firebaseapp.com",
+                projectId: "kly-all-vertical",
+                storageBucket: "kly-all-vertical.appspot.com",
+                messagingSenderId: "1031270433652",
+                appId: "1:1031270433652:web:ecaa223f7397c59bca6221",
+                measurementId: "G-YV9LXF9F74"
             };
 
             // Initialize Firebase
@@ -70,19 +70,19 @@
                 fetchTimeMillis: 60000,
                 minimumFetchIntervalMillis: 30000
             }
+            
             remoteConfig.defaultConfig = {
                 "welcome_message": "Welcome Default",
                 "dummy_config": "true"
             };
             
             
-
             //remoteConfig.settings.fetchTimeMillis = 3600000;
             //remoteConfig.settings.minimumFetchIntervalMillis = 3600000;
 
-            fetchAndActivate()
+            fetchAndActivate(remoteConfig)
             .then(() => {
-                const dummy_config = remoteConfig.getValue('dummy_config');
+                const dummy_config = getValue(remoteConfig, "baca_juga_theme");
                 console.log(dummy_config);
             })
             .catch((err) => {

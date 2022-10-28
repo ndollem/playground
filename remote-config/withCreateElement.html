@@ -1,0 +1,154 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Tempus imperdiet nulla malesuada pellentesque elit eget. In fermentum
+                    posuere urna nec. Pretium viverra suspendisse potenti nullam ac. Aliquet enim tortor at auctor urna
+                    nunc id cursus. Vitae tortor condimentum lacinia quis vel eros donec ac odio. Auctor eu augue ut
+                    lectus arcu bibendum at varius. Id consectetur purus ut faucibus pulvinar elementum integer. Nec
+                    ultrices dui sapien eget. Risus quis varius quam quisque id. Netus et malesuada fames ac turpis
+                    egestas integer eget. Mi ipsum faucibus vitae aliquet.</p>
+                <p>Purus ut faucibus pulvinar elementum integer enim neque. Turpis massa sed elementum tempus. Ac felis
+                    donec et odio pellentesque. Elementum nibh tellus molestie nunc non. Libero nunc consequat interdum
+                    varius sit amet. Risus pretium quam vulputate dignissim suspendisse. Feugiat nisl pretium fusce id
+                    velit ut tortor pretium viverra. Non sodales neque sodales ut etiam sit amet nisl purus. Morbi
+                    tristique senectus et netus et malesuada fames. Eget magna fermentum iaculis eu non. Fermentum odio
+                    eu feugiat pretium nibh ipsum. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet.
+                    Feugiat nibh sed pulvinar proin gravida hendrerit. Etiam non quam lacus suspendisse faucibus
+                    interdum posuere lorem. Tincidunt vitae semper quis lectus nulla at volutpat diam. Enim nec dui nunc
+                    mattis enim ut tellus.</p>
+                <p>Risus at ultrices mi tempus. Diam sit amet nisl suscipit adipiscing. Eu tincidunt tortor aliquam
+                    nulla facilisi. Mattis rhoncus urna neque viverra justo nec. Sed viverra ipsum nunc aliquet bibendum
+                    enim facilisis. Venenatis lectus magna fringilla urna porttitor rhoncus. Lacus sed turpis tincidunt
+                    id aliquet risus feugiat in. Non blandit massa enim nec dui. Congue eu consequat ac felis donec et
+                    odio. Quis lectus nulla at volutpat diam ut venenatis tellus. Sapien eget mi proin sed libero enim
+                    sed faucibus.</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        (function () {
+            const script = document.createElement('script');
+
+            script.async = true;
+
+            // make code in script to be treated as JavaScript module
+            script.type = 'module';
+
+            script.text = `
+                import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
+                import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+                import { getRemoteConfig, fetchAndActivate, getValue } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-remote-config.js";
+
+                const firebaseConfig = {
+                    apiKey: "AIzaSyDGt_EBulRPrTRA5fyA8mTJy4oyu-bxXYE",
+                    authDomain: "kly-all-vertical.firebaseapp.com",
+                    projectId: "kly-all-vertical",
+                    storageBucket: "kly-all-vertical.appspot.com",
+                    messagingSenderId: "1031270433652",
+                    appId: "1:1031270433652:web:ecaa223f7397c59bca6221",
+                    measurementId: "G-YV9LXF9F74"
+                };
+
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const analytics = getAnalytics(app);
+                const remoteConfig = getRemoteConfig(app);
+
+                remoteConfig.settings = {
+                    fetchTimeMillis: 60000,
+                    minimumFetchIntervalMillis: 30000
+                }
+                fetchAndActivate(remoteConfig);
+
+                //load modul to window object
+                window.fbase = {
+                    app: app,
+                    analytics: analytics,
+                    remoteConfig: remoteConfig,
+                    logEvent: (key, val) => {
+                        return logEvent(analytics, key, val)
+                    },
+                    getValue: (paramName) => {
+                        return getValue(remoteConfig, paramName);
+                    }
+                }
+            `;
+
+            script.onerror = () => {
+                console.log('Error occurred while loading firebase init script');
+            };
+
+            document.body.appendChild(script);
+        })();
+    </script>
+
+    <script type="text/javascript">
+        (function () {
+            console.log("Firebase checker init");
+            var firebaseCheckerCounter = 0;
+            var gaFirebaseInit = {
+                fbaseChecker: function () {
+                    setTimeout(function () {
+                        if (this.isReady()) {
+                            console.log("success to check fbase object from firebaseInit checker");
+                            this.callback();
+                        } else {
+                            console.log("Attempt #" + firebaseCheckerCounter + " to check fbase object from firebaseInit checker");
+                            this.counter();
+                            if (firebaseCheckerCounter < 30) {
+                                console.error("firebase is not loaded.");
+                                this.fbaseChecker();
+                            }
+                        }
+                    }.bind(this), 500);
+                },
+                isReady: function () {
+                    return (typeof window.fbase != 'undefined');
+                },
+                counter: function () {
+                    return firebaseCheckerCounter++;
+                },
+                callback: function () {
+                    /*PUT ADDITIONAL CODE HERE*/
+
+                    //collect window object information
+                    var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
+
+                    //send selected data to GA as event
+                    console.log('Success hit fbase callback function');
+                    //console.info(_klyObject);
+                    let aa = window.fbase.getValue('baca_juga_theme');
+                    console.log(aa._value);
+
+                    /*END PUT ADDITIONAL CODE HERE*/
+                }
+            };
+
+            if (document.readyState == "complete") {
+                gaFirebaseInit.fbaseChecker();
+            } else {
+                window.addEventListener('load', function () {
+                    gaFirebaseInit.fbaseChecker();
+                });
+            }
+        })();
+    </script>
+
+
+</body>
+
+</html>

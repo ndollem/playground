@@ -1,0 +1,394 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>POC Remote config</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script async type="module"
+        src="https://cdns.klimg.com/d.kapanlaginetwork.com/banner/asset/firebase/init.js"></script>
+    
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-NSWX5MT');</script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+        var kmklabs = {
+            "env": "production",
+            "baseAssetsUrl": "https://cdn-production-assets-kly.akamaized.net/assets",
+            "gtm": {
+                "articleId": "",
+                "articleTitle": "",
+                "category": "ChannelPage",
+                "editors": "",
+                "editorialType": "",
+                "embedVideo": "",
+                "pageTitle": "home",
+                "publicationDate": "",
+                "publicationTime": "",
+                "subCategory": "root",
+                "subSubCategory": "",
+                "tag": "",
+                "authors": {
+                    "type": "",
+                    "names": ""
+                },
+                "numberOfWords": 0,
+                "enabled": true,
+                "log": false,
+                "imageCreation": false,
+                "type": "",
+                "videos": [],
+                "photos": [],
+                "partner": "",
+                "isSEO": false,
+                "reporters": "",
+                "photographers": "",
+                "isLiveReport": false,
+                "liveReportTag": "",
+                "audience": "",
+                "brand": "",
+                "videoSource": "",
+                "userId": 1706865,
+                "user_type": "returning",
+                "login_status": "not_logged_in",
+                "adblockExists": "no"
+            },
+            "visitor": {
+                "publicationDate": "",
+                "publicationTime": "",
+                "tag": [],
+                "subCategory": "root",
+                "subSubCategory": "",
+                "type": "",
+                "pageType": "ChannelPage",
+                "audience": [],
+                "age": null,
+                "gender": null,
+                "title": "",
+                "platform": "Desktop",
+                "site": "liputan6",
+                "isAdultContent": false,
+                "klyLoginStatus": "not_logged_in",
+                "gaid": "1928906637.1647478952"
+            },
+            "platform": "Desktop",
+            "pageType": "ChannelPage",
+            "site": "liputan6",
+            "dmpSegments": [],
+            "channel": {
+                "id": 188,
+                "name": "Liputan6",
+                "full_slug": ""
+            },
+            "listSubChannel": [
+                {
+                    "name": "News",
+                    "slug": "news"
+                },
+                {
+                    "name": "Crypto",
+                    "slug": "crypto"
+                },
+                {
+                    "name": "Haji",
+                    "slug": "haji"
+                },
+                {
+                    "name": "Ramadan",
+                    "slug": "ramadan"
+                },
+                {
+                    "name": "Saham",
+                    "slug": "saham"
+                },
+                {
+                    "name": "Bisnis",
+                    "slug": "bisnis"
+                },
+                {
+                    "name": "Bola",
+                    "slug": "bola"
+                },
+                {
+                    "name": "ShowBiz",
+                    "slug": "showbiz"
+                },
+                {
+                    "name": "Tekno",
+                    "slug": "tekno"
+                },
+                {
+                    "name": "Foto",
+                    "slug": "photo"
+                },
+                {
+                    "name": "Hot",
+                    "slug": "hot"
+                },
+                {
+                    "name": "Cek Fakta",
+                    "slug": "cek-fakta"
+                },
+                {
+                    "name": "Islami",
+                    "slug": "islami"
+                },
+                {
+                    "name": "Citizen6",
+                    "slug": "citizen6"
+                },
+                {
+                    "name": "Jatim",
+                    "slug": "jatim"
+                },
+                {
+                    "name": "Jateng",
+                    "slug": "jateng"
+                },
+                {
+                    "name": "Otomotif",
+                    "slug": "otomotif"
+                },
+                {
+                    "name": "Regional",
+                    "slug": "regional"
+                },
+                {
+                    "name": "Disabilitas",
+                    "slug": "disabilitas"
+                },
+                {
+                    "name": "Global",
+                    "slug": "global"
+                },
+                {
+                    "name": "On Off",
+                    "slug": "on-off"
+                },
+                {
+                    "name": "Surabaya",
+                    "slug": "surabaya"
+                },
+                {
+                    "name": "Lifestyle",
+                    "slug": "lifestyle"
+                },
+                {
+                    "name": "Health",
+                    "slug": "health"
+                },
+                {
+                    "name": "Video",
+                    "slug": "video"
+                },
+                {
+                    "name": "Pilkada",
+                    "slug": "pilkada"
+                },
+                {
+                    "name": "Belanja",
+                    "slug": "belanja"
+                },
+                {
+                    "name": "Apec",
+                    "slug": "apec"
+                },
+                {
+                    "name": "Liputan Khusus",
+                    "slug": "liputan-khusus"
+                },
+                {
+                    "name": "Apps",
+                    "slug": "apps"
+                },
+                {
+                    "name": "Diary Paskibraka",
+                    "slug": "diary-paskibraka"
+                },
+                {
+                    "name": "Sindikasi",
+                    "slug": "sindikasi"
+                },
+                {
+                    "name": "Quran",
+                    "slug": "quran"
+                },
+                {
+                    "name": "Quick Count",
+                    "slug": "quickcount"
+                },
+                {
+                    "name": "Indonesia Baru",
+                    "slug": "indonesia-baru"
+                },
+                {
+                    "name": "Asian Para Games",
+                    "slug": "asian-para-games"
+                },
+                {
+                    "name": "SEA Games",
+                    "slug": "sea-games"
+                },
+                {
+                    "name": "Fashion & Beauty",
+                    "slug": "fashion-beauty"
+                },
+                {
+                    "name": "Asian Games",
+                    "slug": "asian-games"
+                },
+                {
+                    "name": "Female",
+                    "slug": "fimela"
+                },
+                {
+                    "name": "Berita BCA",
+                    "slug": "berita-bca"
+                },
+                {
+                    "name": "Pilpres",
+                    "slug": "pilpres"
+                },
+                {
+                    "name": "Pileg",
+                    "slug": "pileg"
+                },
+                {
+                    "name": "Puteri Muslimah",
+                    "slug": "putri-muslimah"
+                },
+                {
+                    "name": "TV",
+                    "slug": "tv"
+                },
+                {
+                    "name": "Properti",
+                    "slug": "properti"
+                }
+            ],
+            "category": {
+                "id": 188,
+                "name": "Liputan6",
+                "full_slug": ""
+            },
+            "toggle": {
+                "disableVirtualpvPhoto": false,
+                "lip6DelayPaging": false,
+                "checkDuplicateCms": false,
+                "cmsCheckAllTag": false,
+                "lip6NoPageLoad": true,
+                "disableVirtualPVFimela": true,
+                "editorForMediaDescription": true,
+                "updateGaLiputan": true
+            },
+            "featureToggle": {
+                "gaSendPageview": false,
+                "gaSendEventNative": false
+            },
+            "related_system": "tag"
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NSWX5MT" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <script type="text/javascript">
+        (function () {
+            console.log("Firebase checker init");
+            var firebaseCheckerCounter = 0;
+            var gaFirebaseInit = {
+                fbaseChecker: function () {
+                    setTimeout(function () {
+                        if (this.isReady()) {
+                            console.log("success to check fbase object from firebaseInit checker");
+                            this.callback();
+                        } else {
+                            console.log("Attempt #" + firebaseCheckerCounter + " to check fbase object from firebaseInit checker");
+                            this.counter();
+                            if (firebaseCheckerCounter < 30) {
+                                console.error("firebase is not loaded.");
+                                this.fbaseChecker();
+                            }
+                        }
+                    }.bind(this), 500);
+                },
+                isReady: function () {
+                    return (typeof window.fbase != 'undefined');
+                },
+                counter: function () {
+                    return firebaseCheckerCounter++;
+                },
+                callback: function () {
+                    /*PUT ADDITIONAL CODE HERE*/
+
+                    //collect window object information
+                    var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
+
+                    //send selected data to GA as event
+                    console.log('Success hit fbase callback function');
+                    //console.info(_klyObject);
+                    let aa = window.fbase.getValue('baca_juga_theme');
+                    console.log(aa._value);
+
+                    /*END PUT ADDITIONAL CODE HERE*/
+                }
+            };
+
+            if (document.readyState == "complete") {
+                gaFirebaseInit.fbaseChecker();
+            } else {
+                window.addEventListener('load', function () {
+                    gaFirebaseInit.fbaseChecker();
+                });
+            }
+        })();
+    </script>
+
+    <main class="container">
+        <div class="row">
+            <div class="col">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua. Tempus imperdiet nulla malesuada pellentesque elit eget. In fermentum
+                    posuere urna nec. Pretium viverra suspendisse potenti nullam ac. Aliquet enim tortor at auctor urna
+                    nunc id cursus. Vitae tortor condimentum lacinia quis vel eros donec ac odio. Auctor eu augue ut
+                    lectus arcu bibendum at varius. Id consectetur purus ut faucibus pulvinar elementum integer. Nec
+                    ultrices dui sapien eget. Risus quis varius quam quisque id. Netus et malesuada fames ac turpis
+                    egestas integer eget. Mi ipsum faucibus vitae aliquet.</p>
+                <p>Purus ut faucibus pulvinar elementum integer enim neque. Turpis massa sed elementum tempus. Ac felis
+                    donec et odio pellentesque. Elementum nibh tellus molestie nunc non. Libero nunc consequat interdum
+                    varius sit amet. Risus pretium quam vulputate dignissim suspendisse. Feugiat nisl pretium fusce id
+                    velit ut tortor pretium viverra. Non sodales neque sodales ut etiam sit amet nisl purus. Morbi
+                    tristique senectus et netus et malesuada fames. Eget magna fermentum iaculis eu non. Fermentum odio
+                    eu feugiat pretium nibh ipsum. Nulla facilisi morbi tempus iaculis urna id volutpat lacus laoreet.
+                    Feugiat nibh sed pulvinar proin gravida hendrerit. Etiam non quam lacus suspendisse faucibus
+                    interdum posuere lorem. Tincidunt vitae semper quis lectus nulla at volutpat diam. Enim nec dui nunc
+                    mattis enim ut tellus.</p>
+                <p>Risus at ultrices mi tempus. Diam sit amet nisl suscipit adipiscing. Eu tincidunt tortor aliquam
+                    nulla facilisi. Mattis rhoncus urna neque viverra justo nec. Sed viverra ipsum nunc aliquet bibendum
+                    enim facilisis. Venenatis lectus magna fringilla urna porttitor rhoncus. Lacus sed turpis tincidunt
+                    id aliquet risus feugiat in. Non blandit massa enim nec dui. Congue eu consequat ac felis donec et
+                    odio. Quis lectus nulla at volutpat diam ut venenatis tellus. Sapien eget mi proin sed libero enim
+                    sed faucibus.</p>
+            </div>
+        </div>
+    </main>
+
+
+</body>
+
+</html>
