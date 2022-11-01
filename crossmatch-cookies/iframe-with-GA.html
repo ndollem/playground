@@ -1,0 +1,130 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iframe page</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YV9LXF9F74"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-YV9LXF9F74', { 'send_page_view': false });
+
+        const clientIdPromise = new Promise(resolve => {
+            gtag('get', 'G-YV9LXF9F74', 'client_id', resolve)
+        }).then((client_id) => {
+            window.ga_clientId = client_id;
+            console.log('client_id from gtag :'+client_id);
+        });
+    </script>
+    <script>
+        window.ahoyUserDefinedConfig = {
+            sendBatch: true,
+            environment: 'production',
+            //environment: 'staging',
+            plentyHostnameProduction: 'https://cdp.vidio.com',
+            plentyHostnameStaging: 'https://cdp.int.vidio.com'
+        };
+        var urlParams = new URLSearchParams(window.location.search);
+    </script>
+    <script src="https://static-web.prod.vid.id/ahoy/ahoy-falcon-2022-01-13-02-35-43.js" defer
+        crossorigin="true"></script>
+    <script
+        src="https://personalization.vidio.com/embed-internal.8324be04cc0adb1be9165f1847ed900281851c7a.js?enable_ptid=false"
+        crossorigin="true" id="embed-internal" defer crossorigin="true"></script>
+</head>
+
+<body>
+    <!--this part will be on GTM-->
+    <script>
+        (function () {
+            var ahoyCheckerCounter = 0;
+            var personalization = {
+                ready: function () {
+                    setTimeout(function () {
+                        if (this.isReady()) {
+                            //console.log("success to check AhoyEvent object from ahoy checker");
+                            this.callback();
+                        } else {
+                            /*console.log("Attempt #" + ahoyCheckerCounter + " to check AhoyEvent object from ahoy checker");*/
+                            this.counter();
+                            if (ahoyCheckerCounter < 30) {
+                                /*console.error("AhoyPageviewEvent is not loaded.");*/
+                                this.ready();
+                            }
+                        }
+                    }.bind(this), 500);
+                },
+                isReady: function () {
+                    return (typeof window.AhoyEvent != 'undefined') && (typeof window.ahoy != 'undefined');
+                },
+                counter: function () {
+                    return ahoyCheckerCounter++;
+                },
+                callback: function () {
+                    /*PUT ADDITIONAL CODE HERE*/
+                    window.AhoyEvent.sendPageviewEvent();
+
+                    //send kmklabs.visitor to datalake
+                    var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
+                    //window.AhoyEvent.sendPersonalizationUserEvent(_klyObject.visitor);
+
+                    //sample how to get visitor_id
+                    console.log("ahoy_visitor = " + window.ahoy.visitorId);
+
+                    const urlSearchParams = new URLSearchParams(window.location.search);
+                    const qParams = Object.fromEntries(urlSearchParams.entries());
+                    console.table(qParams);
+
+                    if (qParams['senderCookies'] && window.ahoy.visitorId) {
+                        const sessionData = {
+                            action: 'crossmatch_cookies',
+                            action_detail: {
+                                origin_domain: qParams['senderHost'],
+                                origin_visitor_id: qParams['senderCookies'],
+                                origin_gaId: qParams['senderGAID'],
+                                tail_domain: window.location.hostname,
+                                tail_visitor_id: window.ahoy.visitorId,
+                                //tail_gaId: this.checkGAIDfromCookies() //canceled since not persistence on framed environment
+                            }
+                        }
+                        //window.AhoyEvent.sendPersonalizationUserEvent(sessionData);
+                        console.log('gaId1: ' + this.checkGAIDfromCookies());
+                        console.log('gaId2: ' + window.ga_clientId);
+                        
+                        console.log(sessionData);
+                    }
+                    /*END PUT ADDITIONAL CODE HERE*/
+                },
+                checkGAIDfromCookies: function () {
+                    console.log(document.cookie.split(';'));
+                    const cName = '_ga=',
+                        gaID = document.cookie.split(';').find(v => {
+                            return v.match(cName);
+                        });
+                    return gaID ? decodeURIComponent(gaID).trim().replace(cName, '').slice(6) : window.ga_clientId;
+                }
+            };
+
+            if (document.readyState == "complete") {
+                personalization.ready();
+            } else {
+                window.addEventListener('load', function () {
+                    personalization.ready();
+                });
+            }
+        })();
+    </script>
+    <!--END this part will be on GTM-->
+    <script>
+
+    </script>
+
+</body>
+
+</html>
