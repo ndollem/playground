@@ -63,7 +63,7 @@
 
                     //send kmklabs.visitor to datalake
                     var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
-                    //window.AhoyEvent.sendPersonalizationUserEvent(_klyObject.visitor);
+                    window.AhoyEvent.sendPersonalizationUserEvent(_klyObject.visitor);
 
                     //sample how to get visitor_id
                     console.log("current domain ahoy_visitor = "+window.ahoy.visitorId);
@@ -73,21 +73,22 @@
                     /*END PUT ADDITIONAL CODE HERE*/
                 },
                 checkGAID: function(){
-                    const cName = '_ga_YV9LXF9F74=',
-                    gaID = document.cookie.split(';').find(v => {
+                    var cName = '_ga=';
+                    gaID = document.cookie.split(';').find(function (v) {
                         return v.match(cName);
                     });
                     return gaID ? decodeURIComponent(gaID).trim().replace(cName, '') : 0;
                 },
                 sendSession: function(){
-                    var ifrm = document.createElement("iframe"),
+                    var ifrmYouniverse = document.createElement("iframe"),
                         ifrmParam = "?senderCookies="+window.ahoy.visitorId+"&senderGAID="+this.checkGAID()+"&senderHost="+window.location.hostname;
                     console.log(ifrmParam);
-                    ifrm.setAttribute("src", "https://d.kapanlaginetwork.com/banner/preview/2022/10/26/crossmatch-cookies/iframe.html"+ifrmParam);
-                    ifrm.style.width = "1px";
-                    ifrm.style.height = "1px";
-                    ifrm.style.display = "none";
-                    document.body.appendChild(ifrm);
+                    ifrmYouniverse.style.display="none";
+                    ifrmYouniverse.width=0;
+                    ifrmYouniverse.height=0;
+                    ifrmYouniverse.setAttribute("referrerpolicy","no-referrer-when-downgrade");
+                    ifrmYouniverse.setAttribute("src", "https://www.youniverse.id/html/crossmatch-cookies-frame.html"+ifrmParam);
+                    document.body.appendChild(ifrmYouniverse);
                 }
             };
 
