@@ -24,83 +24,83 @@
     </head>
     
     <body>
-        <!--this part will be on GTM-->
-        <script>
-            (function () {
-                var ahoyCheckerCounter = 0;
-                var personalization = {
-                    ready: function () {
-                        setTimeout(function () {
-                            if (this.isReady()) {
-                                //console.log("success to check AhoyEvent object from ahoy checker");
-                                this.callback();
-                            } else {
-                                /*console.log("Attempt #" + ahoyCheckerCounter + " to check AhoyEvent object from ahoy checker");*/
-                                this.counter();
-                                if (ahoyCheckerCounter < 30) {
-                                    /*console.error("AhoyPageviewEvent is not loaded.");*/
-                                    this.ready();
-                                }
-                            }
-                        }.bind(this), 500);
-                    },
-                    isReady: function () {
-                        return (typeof window.AhoyEvent != 'undefined') && (typeof window.ahoy != 'undefined');
-                    },
-                    counter: function () {
-                        return ahoyCheckerCounter++;
-                    },
-                    callback: function () {
-                        /*PUT ADDITIONAL CODE HERE*/
-                        window.AhoyEvent.sendPageviewEvent();
-
-                        var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
-                        //sample how to get visitor_id
-                        console.log("ahoy_visitor = " + window.ahoy.visitorId);
-    
-                        const urlSearchParams = new URLSearchParams(window.location.search);
-                        const qParams = Object.fromEntries(urlSearchParams.entries());
-                        console.table(qParams);
-    
-                        if (qParams['senderCookies'] && window.ahoy.visitorId) {
-                            const sessionData = {
-                                action: 'crossmatch_cookies',
-                                action_detail: {
-                                    origin_domain: qParams['senderHost'],
-                                    origin_visitor_id: qParams['senderCookies'],
-                                    origin_gaId: qParams['senderGAID'],
-                                    tail_domain: window.location.hostname,
-                                    tail_visitor_id: window.ahoy.visitorId,
-                                    //tail_gaId: this.checkGAIDfromCookies() //canceled since not persistence on framed environment
-                                }
-                            }
-    
-                            //activate this to send data to datalake
-                            window.AhoyEvent.sendPersonalizationUserEvent(sessionData);
-                            
-                            console.table(sessionData);
+        
+<script>
+    (function () {
+        var ahoyCheckerCounter = 0;
+        var personalization = {
+            ready: function () {
+                setTimeout(function () {
+                    if (this.isReady()) {
+                        //console.log("success to check AhoyEvent object from ahoy checker");
+                        this.callback();
+                    } else {
+                        /*console.log("Attempt #" + ahoyCheckerCounter + " to check AhoyEvent object from ahoy checker");*/
+                        this.counter();
+                        if (ahoyCheckerCounter < 30) {
+                            /*console.error("AhoyPageviewEvent is not loaded.");*/
+                            this.ready();
                         }
-                        /*END PUT ADDITIONAL CODE HERE*/
-                    },
-                    checkGAIDfromCookies: function () {
-                        const cName = '_ga=',
-                            gaID = document.cookie.split(';').find(v => {
-                                return v.match(cName);
-                            });
-                        return gaID ? decodeURIComponent(gaID).trim().replace(cName, '').slice(6) : window.ga_clientId;
                     }
-                };
-    
-                if (document.readyState == "complete") {
-                    personalization.ready();
-                } else {
-                    window.addEventListener('load', function () {
-                        personalization.ready();
-                    });
+                }.bind(this), 500);
+            },
+            isReady: function () {
+                return (typeof window.AhoyEvent != 'undefined') && (typeof window.ahoy != 'undefined');
+            },
+            counter: function () {
+                return ahoyCheckerCounter++;
+            },
+            callback: function () {
+                /*PUT ADDITIONAL CODE HERE*/
+                window.AhoyEvent.sendPageviewEvent();
+
+                var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
+                //sample how to get visitor_id
+                console.log("ahoy_visitor = " + window.ahoy.visitorId);
+
+                const urlSearchParams = new URLSearchParams(window.location.search);
+                const qParams = Object.fromEntries(urlSearchParams.entries());
+                console.table(qParams);
+
+                if (qParams['senderCookies'] && window.ahoy.visitorId) {
+                    const sessionData = {
+                        action: 'crossmatch_cookies',
+                        action_detail: {
+                            origin_domain: qParams['senderHost'],
+                            origin_visitor_id: qParams['senderCookies'],
+                            origin_gaId: qParams['senderGAID'],
+                            tail_domain: window.location.hostname,
+                            tail_visitor_id: window.ahoy.visitorId,
+                            //tail_gaId: this.checkGAIDfromCookies() //canceled since not persistence on framed environment
+                        }
+                    }
+
+                    //activate this to send data to datalake
+                    window.AhoyEvent.sendPersonalizationUserEvent(sessionData);
+                    
+                    console.table(sessionData);
                 }
-            })();
-        </script>
-        <!--END this part will be on GTM-->
+                /*END PUT ADDITIONAL CODE HERE*/
+            },
+            checkGAIDfromCookies: function () {
+                const cName = '_ga=',
+                    gaID = document.cookie.split(';').find(v => {
+                        return v.match(cName);
+                    });
+                return gaID ? decodeURIComponent(gaID).trim().replace(cName, '').slice(6) : window.ga_clientId;
+            }
+        };
+
+        if (document.readyState == "complete") {
+            personalization.ready();
+        } else {
+            window.addEventListener('load', function () {
+                personalization.ready();
+            });
+        }
+    })();
+</script>
+        
     
     </body>
     
