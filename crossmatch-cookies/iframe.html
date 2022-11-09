@@ -76,7 +76,8 @@
                     }
 
                     //activate this to send data to datalake
-                    window.AhoyEvent.sendPersonalizationUserEvent(sessionData);
+                    //window.AhoyEvent.sendPersonalizationUserEvent(sessionData);
+                    window.AhoyEvent.sendEvent('PERSONALIZATION::ID-RESOLUTION', sessionData)
                     
                     console.table(sessionData);
                 }
