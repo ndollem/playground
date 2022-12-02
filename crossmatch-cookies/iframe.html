@@ -52,7 +52,6 @@
             },
             callback: function () {
                 /*PUT ADDITIONAL CODE HERE*/
-                //window.AhoyEvent.sendPageviewEvent();
 
                 var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
                 //sample how to get visitor_id
@@ -77,8 +76,12 @@
 
                     //activate this to send data to datalake
                     window.AhoyEvent.sendEvent('PERSONALIZATION::ID-RESOLUTION', sessionData)
-                    
                     console.table(sessionData);
+
+                    //send visitor_id to parent document if requested
+                    if(qParams['reqCallback']=="true"){
+                        this.sendIdtoParent(sessionData.action_detail);
+                    }
                 }
                 /*END PUT ADDITIONAL CODE HERE*/
             },
@@ -88,6 +91,9 @@
                         return v.match(cName);
                     });
                 return gaID ? decodeURIComponent(gaID).trim().replace(cName, '').slice(6) : window.ga_clientId;
+            },
+            sendIdtoParent: function(pairData){
+                window.parent.postMessage(pairData, "*");
             }
         };
 

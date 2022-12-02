@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,81 +30,123 @@
         src="https://personalization.vidio.com/embed-internal.8324be04cc0adb1be9165f1847ed900281851c7a.js?enable_ptid=false"
         crossorigin="true" id="embed-internal" defer crossorigin="true"></script>
 </head>
+
 <body>
 
-<!--this part will be on GTM-->
-<script>
-(function () {
-    var ahoyCheckerCounter = 0;
-    var personalization = {
-        ready: function () {
-            setTimeout(function () {
-                if (this.isReady()) {
-                    //console.log("success to check AhoyEvent object from ahoy checker");
-                    this.callback();
-                } else {
-                    /*console.log("Attempt #" + ahoyCheckerCounter + " to check AhoyEvent object from ahoy checker");*/
-                    this.counter();
-                    if (ahoyCheckerCounter < 30) {
-                        /*console.error("AhoyPageviewEvent is not loaded.");*/
-                        this.ready();
+    <!--this part will be on GTM-->
+    <script>
+        (function () {
+            var ahoyCheckerCounter = 0;
+            var personalization = {
+                ready: function () {
+                    setTimeout(function () {
+                        if (this.isReady()) {
+                            //console.log("success to check AhoyEvent object from ahoy checker");
+                            this.callback();
+                        } else {
+                            /*console.log("Attempt #" + ahoyCheckerCounter + " to check AhoyEvent object from ahoy checker");*/
+                            this.counter();
+                            if (ahoyCheckerCounter < 30) {
+                                /*console.error("AhoyPageviewEvent is not loaded.");*/
+                                this.ready();
+                            }
+                        }
+                    }.bind(this), 500);
+                },
+                isReady: function () {
+                    return (typeof window.AhoyEvent != 'undefined') && (typeof window.ahoy != 'undefined');
+                },
+                counter: function () {
+                    return ahoyCheckerCounter++;
+                },
+                callback: function () {
+                    /*PUT ADDITIONAL CODE HERE*/
+                    //window.AhoyEvent.sendPageviewEvent();
+
+                    //send kmklabs.visitor to datalake
+                    var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
+                    //window.AhoyEvent.sendPersonalizationUserEvent(_klyObject.visitor);
+
+                    //sample how to get visitor_id
+                    console.log("current domain ahoy_visitor = " + window.ahoy.visitorId);
+
+                    //send current domain cookies to iframe agregator
+                    this.sendSession();
+
+                    if (window.addEventListener) {
+                        window.addEventListener("message", this.listenMsg, false);
+                    } else {
+                        window.attachEvent("onmessage", this.listenMsg);
                     }
+                    /*END PUT ADDITIONAL CODE HERE*/
+                },
+                checkGAID: function () {
+                    var cName = '_ga=';
+                    gaID = document.cookie.split(';').find(function (v) {
+                        return v.match(cName);
+                    });
+                    return gaID ? decodeURIComponent(gaID).trim().replace(cName, '') : 0;
+                },
+                sendSession: function () {
+                    var ifrmYouniverse = document.createElement("iframe"),
+                        //ifrmParam = "?senderCookies=" + window.ahoy.visitorId + "&senderGAID=" + this.checkGAID() + "&senderHost=" + window.location.hostname;
+                        ifrmParam = "?senderCookies=" + window.ahoy.visitorId + "&senderGAID=" + this.checkGAID() + "&senderHost=" + window.location.hostname+"&reqCallback=true";
+                    console.log(ifrmParam);
+                    ifrmYouniverse.style.display = "none";
+                    ifrmYouniverse.width = 0;
+                    ifrmYouniverse.height = 0;
+                    ifrmYouniverse.setAttribute("referrerpolicy", "no-referrer-when-downgrade");
+                    //ifrmYouniverse.setAttribute("src", "https://www.youniverse.id/html/crossmatch-cookies-frame.html"+ifrmParam);
+                    //ifrmYouniverse.setAttribute("src", "http://gusalim.local:8000/crossmatch-cookies/iframe.html"+ifrmParam);
+                    ifrmYouniverse.setAttribute("src", "https://d.kapanlaginetwork.com/banner/preview/2022/12/01/pm/iframe.html" + ifrmParam);
+                    document.body.appendChild(ifrmYouniverse);
+                },
+                listenMsg: function (msg) {
+                    console.log(msg);
+                    //verify pairing data
+                    if (
+                        msg.data.origin_domain == window.location.hostname &&
+                        msg.data.origin_visitor_id == window.ahoy.visitorId
+                    ) {
+                        personalization.setCookie("youniverse_id", msg.data.tail_visitor_id, 365);
+                    }
+                },
+                setCookie: function (cname, cvalue, exdays) {
+                    const d = new Date();
+                    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+                    let expires = "expires=" + d.toUTCString();
+                    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+                },
+                getCookie: function (cname) {
+                    let name = cname + "=";
+                    let decodedCookie = decodeURIComponent(document.cookie);
+                    let ca = decodedCookie.split(';');
+                    for (let i = 0; i < ca.length; i++) {
+                        let c = ca[i];
+                        while (c.charAt(0) == ' ') {
+                            c = c.substring(1);
+                        }
+                        if (c.indexOf(name) == 0) {
+                            return c.substring(name.length, c.length);
+                        }
+                    }
+                    return "";
                 }
-            }.bind(this), 500);
-        },
-        isReady: function () {
-            return (typeof window.AhoyEvent != 'undefined') && (typeof window.ahoy != 'undefined');
-        },
-        counter: function () {
-            return ahoyCheckerCounter++;
-        },
-        callback: function () {
-            /*PUT ADDITIONAL CODE HERE*/
-            window.AhoyEvent.sendPageviewEvent();
+            };
 
-            //send kmklabs.visitor to datalake
-            var _klyObject = typeof window.kly !== 'undefined' ? window.kly : window.kmklabs;
-            window.AhoyEvent.sendPersonalizationUserEvent(_klyObject.visitor);
-
-            //sample how to get visitor_id
-            console.log("current domain ahoy_visitor = "+window.ahoy.visitorId);
-
-            //send current domain cookies to iframe agregator
-            this.sendSession();
-            /*END PUT ADDITIONAL CODE HERE*/
-        },
-        checkGAID: function(){
-            var cName = '_ga=';
-            gaID = document.cookie.split(';').find(function (v) {
-                return v.match(cName);
-            });
-            return gaID ? decodeURIComponent(gaID).trim().replace(cName, '') : 0;
-        },
-        sendSession: function(){
-            var ifrmYouniverse = document.createElement("iframe"),
-                ifrmParam = "?senderCookies="+window.ahoy.visitorId+"&senderGAID="+this.checkGAID()+"&senderHost="+window.location.hostname;
-            console.log(ifrmParam);
-            ifrmYouniverse.style.display="none";
-            ifrmYouniverse.width=0;
-            ifrmYouniverse.height=0;
-            ifrmYouniverse.setAttribute("referrerpolicy","no-referrer-when-downgrade");
-            ifrmYouniverse.setAttribute("src", "https://www.youniverse.id/html/crossmatch-cookies-frame.html"+ifrmParam);
-            document.body.appendChild(ifrmYouniverse);
-        }
-    };
-
-    if (document.readyState == "complete") {
-        personalization.ready();
-    } else {
-        window.addEventListener('load', function () {
-            personalization.ready();
-        });
-    }
-})();
-</script>
-<!--END this part will be on GTM-->
+            if (document.readyState == "complete") {
+                personalization.ready();
+            } else {
+                window.addEventListener('load', function () {
+                    personalization.ready();
+                });
+            }
+        })();
+    </script>
+    <!--END this part will be on GTM-->
 
     <!--iframe src="https://d.kapanlaginetwork.com/banner/preview/2022/10/26/crossmatch-cookies/iframe.html"></iframe-->
-    
+
 </body>
+
 </html>
