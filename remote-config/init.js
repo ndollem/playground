@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+import { getAnalytics, logEvent, setUserProperties } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
 import { getRemoteConfig, fetchAndActivate, getValue } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-remote-config.js";
 
 const firebaseConfig = {

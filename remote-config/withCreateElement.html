@@ -50,7 +50,7 @@
 
             script.text = `
                 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-app.js";
-                import { getAnalytics, logEvent } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
+                import { getAnalytics, logEvent, setUserProperties, setUserId } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-analytics.js";
                 import { getRemoteConfig, fetchAndActivate, getValue } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-remote-config.js";
 
                 const firebaseConfig = {
@@ -81,6 +81,12 @@
                     remoteConfig: remoteConfig,
                     logEvent: (key, val) => {
                         return logEvent(analytics, key, val)
+                    },
+                    setUserProperties: (jsonData) => {
+                        return setUserProperties(analytics, jsonData)
+                    },
+                    setUserId: (custom_userid) => {
+                        return setUserId(analytics, custom_userid);
                     },
                     getValue: (paramName) => {
                         return getValue(remoteConfig, paramName);
