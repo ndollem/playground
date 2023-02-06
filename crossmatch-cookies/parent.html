@@ -1,0 +1,23 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <iframe src="http://gusalim.local:8000/crossmatch-cookies/child.html" frameborder="0"></iframe>
+    <script>
+        function listenMessage(msg) {
+            console.log(msg);
+            console.log(msg.data.msg);
+        }
+
+        if (window.addEventListener) {
+            window.addEventListener("message", listenMessage, false);
+        } else {
+            window.attachEvent("onmessage", listenMessage);
+        }
+    </script>
+</body>
+</html>

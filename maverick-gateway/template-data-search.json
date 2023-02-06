@@ -1,0 +1,27 @@
+{
+    "template": "<h3>{{title}}</h3> <div class=\"mvk-table\"> <div class=\"mvk-row\"> <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"1\" class=\"mvk-widget-link\" href=\"{{url1}}\">{{text1}}</a></div> <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"2\" class=\"mvk-widget-link\" href=\"{{url2}}\">{{text2}}</a></div> </div> <div class=\"mvk-row\"> <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"3\" class=\"mvk-widget-link\" href=\"{{url3}}\">{{text3}}</a></div> <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"4\" class=\"mvk-widget-link\" href=\"{{url4}}\">{{text4}}</a></div> </div> </div>",
+    "style": ".mvk-wrapper{border-top:2px solid #6b6b6b;margin:1em;padding-top:10px}.mvk-wrapper h3{padding:1em .7em;font-size:1.4em}.mvk-table{display:table;border-spacing:1em}.mvk-row:first-child>.mvk-cell{border-bottom:1px solid #eaeaea;padding:0 0 1em}.mvk-row{display:table-row}.mvk-cell{display:table-cell;width:50%;}.mvk-cell a{color:#19558a;font-weight:700;text-decoration:none}",
+    "data": {
+        "title": "TRENDING HARI INI",
+        "feature": "trending-today",
+        "location": "1st-paragraf-paging-2-for-search-users",
+        "list": [
+            {
+                "text1": "Be Smart",
+                "url1": "https://m.merdeka.com/tag/be-smart"
+            },
+            {
+                "text2": "Nama Bayi Laki-Laki",
+                "url2": "https://m.merdeka.com/tag/nama-bayi-laki-laki"
+            },
+            {
+                "text3": "KTT G20",
+                "url3": "https://m.merdeka.com/tag/ktt-g20"
+            },
+            {
+                "text4": "Mayat di Kalideres",
+                "url4": "https://m.merdeka.com/tag/mayat-di-kalideres"
+            }
+        ]
+    }
+}

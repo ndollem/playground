@@ -1,0 +1,11 @@
+<h3>{{title}}</h3>
+<div class=\"mvk-table\">
+    <div class=\"mvk-row\">
+        <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"1\" class=\"mvk-widget-link\" href=\"{{url1}}\">{{text1}}</a></div>
+        <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"2\" class=\"mvk-widget-link\" href=\"{{url2}}\">{{text2}}</a></div>
+    </div>
+    <div class=\"mvk-row\">
+        <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"3\" class=\"mvk-widget-link\" href=\"{{url3}}\">{{text3}}</a></div>
+        <div class=\"mvk-cell\"><a data-feature=\"trending-today\" data-position=\"4\" class=\"mvk-widget-link\" href=\"{{url4}}\">{{text4}}</a></div>
+    </div>
+</div>

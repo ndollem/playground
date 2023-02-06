@@ -1,0 +1,212 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat GPT Prompt</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container my-5">
+        <div class="row mb-3">
+            <div class="col">
+                <div class="">
+                    <img src="https://openai.com/assets/images/favicon.svg?v=bcb10a5966"
+                        style="width:15%; margin: auto;display:block;">
+                    <h1 class="pt-2 pb-5" style="text-align:center;">KONTEKS GENERATOR</h1>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" id="tPrompt" class="form-control"
+                        placeholder="Buat pertanyaan untuk membuat list konteks"
+                        value="Buatkan 3 topik paragraf dengan nomor urut tentang sejarah peradaban kuno"
+                        aria-label="Ask your question">
+                    <button class="btn btn-outline-primary" type="button" id="bSubmit">Generate</button>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <h2>Hasil konteks</h2>
+                <hr>
+                <div class="accordion" id="accordionResult">
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <template id="accordionItem">
+        <h2 class="accordion-header" id="heading##num##">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#collapse##num##" aria-expanded="false" aria-controls="collapse##num##">
+                ##text##
+            </button>
+        </h2>
+        <div id="collapse##num##" class="accordion-collapse collapse" aria-labelledby="heading##num##"
+            data-bs-parent="#accordionResult">
+            <div class="accordion-body">
+                Buat artikel berdasarkan konteks diatas
+                <button class="btn btn-outline-warning create-article" type="button" data-order="1"
+                    data-context="##text##" data-index="##num##">Generate</button>
+                <div id="article##num##"></div>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticLoading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Memproses</h1>
+                    <!--button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button-->
+                </div>
+                <div class="modal-body">
+                    <div class="loading">
+                        <img src="https://hackernoon.imgix.net/images/0*4Gzjgh9Y7Gu8KEtZ.gif" alt="" class="mx-auto"
+                            style="width:35%; display:block; margin-top:-1em;">
+                        <p style="text-align:center;margin-top: -35px;">Mohon tunggu</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            const loadModal = new bootstrap.Modal('#staticLoading', {
+                keyboard: false
+            });
+
+            var bSubmit = document.getElementById("bSubmit");
+            bSubmit.addEventListener("click", () => {
+                chatGPT.getKeyword();
+            });
+
+            var chatGPT = {
+                apiEndpoin: "https://chatgpt-api-btbd2odrea-et.a.run.app/api/getAnswer",
+
+                getKeyword: function () {
+
+                    //document.getElementsByClassName("loading")[0].classList.toggle("d-none");
+                    loadModal.toggle();
+                    document.getElementById("accordionResult").innerHTML = "";
+
+                    let prompt = document.getElementById("tPrompt").value;
+                    this.sendPayload(prompt, 1000)
+                        .then((response) => {
+                            if (response.status == '200') {
+                                //console.log(response);
+                                var list = (response.message).split("\n\n");
+                                //console.log(list);
+                                //console.log(JSON.stringify(list));
+                                this.templateReplace(list.filter(n => n));
+                            } else {
+                                console.log(response.message);
+                                this.templateReplace({ 'error': response.message });
+                            }
+                            //document.getElementsByClassName("loading")[0].classList.toggle("d-none");
+                            loadModal.toggle()
+                        });
+
+                },
+
+                sendPayload: async function (prompt, token) {
+                    var payload = {
+                        question: prompt,
+                        max_token: parseFloat(token)
+                    };
+                    console.log('EXECUTING COMMAND : ', payload);
+                    console.log('Processing....')
+                    //return await fetch("temp", {
+                    return await fetch(this.apiEndpoin, {
+                        method: 'post',
+                        cache: 'no-cache',
+                        headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    }).then((response) => {
+                        return response.json()
+                    }).then((res) => {
+                        //console.log(res);
+                        if (res.status === 200) {
+                            console.log("Answer successfully fetch!")
+                            //console.log(res.message);
+                            return res;
+                        }
+                    }).catch((err) => {
+                        console.log(err);
+                        return {
+                            status: 400,
+                            message: 'Failed to fetch, possible to high peak request!'
+                        };
+                    });
+                },
+
+                templateReplace: function (items) {
+                    //console.log(items);
+                    document.getElementById("accordionResult").innerHTML = "";
+                    var template = document.getElementById("accordionItem").innerHTML;
+
+                    items.forEach((value, index, array) => {
+                        //console.log(index, value);
+                        //console.log(template);
+                        let item = this.strReplace(template, "##num##", index);
+                        //console.log(item);
+                        item = this.strReplace(item, "##text##", value);
+
+                        //console.log(item);
+                        var newNode = document.createElement("div")
+                        newNode.className = 'accordion-item';
+                        newNode.innerHTML = item;
+                        document.getElementById('accordionResult').appendChild(newNode);
+                    });
+
+                    this.initGenerateArticleBtn();
+                },
+
+                strReplace: function (source, text_key, text_val) {
+                    return source.replaceAll(text_key, text_val);
+                },
+
+                initGenerateArticleBtn: function () {
+                    var elements = document.getElementsByClassName("create-article");
+                    Array.from(elements).forEach(function (element) {
+                        element.addEventListener('click', (el) => {
+                            //console.log(el.target.getAttribute("data-context"), el.target.getAttribute("data-index"));
+                            chatGPT.generateArticle(el.target.getAttribute("data-context"), el.target.getAttribute("data-index"));
+                        });
+                    });
+                },
+
+                generateArticle: function (context, index) {
+                    var articlePrompt = "Buat artikel minimal 5 paragraf menggunakan konteks topik di bawah ini : \n\n" + context + "\n\nTambahkan juga judul artikel sebagai heading";
+                    //console.log(articlePrompt);
+                    loadModal.toggle();
+                    this.sendPayload(articlePrompt, 3000)
+                        .then((response) => {
+                            if (response.status == 200) {
+                                //console.log(response);
+                                document.getElementById("article" + index).innerHTML = '<hr class="my-3" />' + (response.message).split("\n\n").join("<br /><br />");
+                            } else {
+                                document.getElementById("article" + index).innerHTML = '<hr class="my-3" />ERROR : ' + response.message;
+                            }
+                            loadModal.toggle()
+                        });
+                }
+            }
+        })();
+    </script>
+</body>
+
+</html>
