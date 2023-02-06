@@ -14,20 +14,26 @@
 
 <body>
     <div class="container my-5">
-        <div class="row mb-3">
+        <div class="row">
             <div class="col">
                 <div class="">
                     <img src="https://openai.com/assets/images/favicon.svg?v=bcb10a5966"
                         style="width:15%; margin: auto;display:block;">
                     <h1 class="pt-2 pb-5" style="text-align:center;">KONTEKS GENERATOR</h1>
                 </div>
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <input type="text" id="tPrompt" class="form-control"
                         placeholder="Buat pertanyaan untuk membuat list konteks"
                         value="Buatkan 3 topik paragraf dengan nomor urut tentang sejarah peradaban kuno"
                         aria-label="Ask your question">
                     <button class="btn btn-outline-primary" type="button" id="bSubmit">Generate</button>
                 </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="blockquote-footer fw-light" style="font-size: .65em;">
+                <strong>note : </strong>gunakan perintah untuk membuat <strong><em>"xx paragraf"</em></strong> agar context di generate menjadi beberapa bagian<br />
+                Tambahkan juga perintah <strong><em>"dengan nomor urut"</em></strong> satu context paragraf lebih mudah dibedakan dengan context berikutnya.
             </div>
         </div>
         <div class="row">
@@ -193,7 +199,7 @@
                     var articlePrompt = "Buat artikel minimal 5 paragraf menggunakan konteks topik di bawah ini : \n\n" + context + "\n\nTambahkan juga judul artikel sebagai heading";
                     //console.log(articlePrompt);
                     loadModal.toggle();
-                    this.sendPayload(articlePrompt, 3000)
+                    this.sendPayload(articlePrompt, 5000)
                         .then((response) => {
                             if (response.status == 200) {
                                 //console.log(response);
