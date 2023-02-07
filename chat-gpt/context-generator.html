@@ -24,7 +24,7 @@
                 <div class="input-group">
                     <input type="text" id="tPrompt" class="form-control"
                         placeholder="Buat pertanyaan untuk membuat list konteks"
-                        value="Buatkan 3 topik paragraf dengan nomor urut tentang sejarah peradaban kuno"
+                        value="Buatkan 3 paragraf dengan nomor urut tentang tokoh-tokoh penemu terkemuka dunia"
                         aria-label="Ask your question">
                     <button class="btn btn-outline-primary" type="button" id="bSubmit">Generate</button>
                 </div>
@@ -33,17 +33,21 @@
         <div class="row mb-3">
             <div class="blockquote-footer fw-light ms-3" style="font-size: .75em;">
                 <strong>note : </strong><br />
-                Gunakan perintah <strong><em>"xx paragraf"</em></strong> untuk membuat beberapa context yang berbeda.<br />
-                Tambahkan juga perintah <strong><em>"dengan nomor urut"</em></strong> agar satu context paragraf lebih mudah dibedakan dengan context berikutnya.
+                Gunakan perintah <strong><em>"xx paragraf"</em></strong> untuk membuat beberapa context yang
+                berbeda.<br />
+                Tambahkan juga perintah <strong><em>"dengan nomor urut"</em></strong> agar satu context paragraf lebih
+                mudah dibedakan dengan context berikutnya.
             </div>
         </div>
         <div class="row">
             <div class="col">
                 <h2>Hasil konteks</h2>
                 <hr>
+
                 <div class="accordion" id="accordionResult">
 
                 </div>
+
             </div>
         </div>
     </div>
@@ -110,15 +114,15 @@
                     let prompt = document.getElementById("tPrompt").value;
                     this.sendPayload(prompt, 1000)
                         .then((response) => {
+                            //console.log(response);
                             if (response.status == '200') {
-                                //console.log(response);
                                 var list = (response.message).split("\n\n");
-                                //console.log(list);
+                                console.log(list);
                                 //console.log(JSON.stringify(list));
                                 this.templateReplace(list.filter(n => n));
                             } else {
                                 console.log(response.message);
-                                this.templateReplace({ 'error': response.message });
+                                this.templateReplace([{ 'error': response.message }]);
                             }
                             //document.getElementsByClassName("loading")[0].classList.toggle("d-none");
                             loadModal.toggle()
@@ -133,7 +137,7 @@
                     };
                     console.log('EXECUTING COMMAND : ', payload);
                     console.log('Processing....')
-                    //return await fetch("temp", {
+
                     return await fetch(this.apiEndpoin, {
                         method: 'post',
                         cache: 'no-cache',
@@ -152,9 +156,9 @@
                             return res;
                         }
                     }).catch((err) => {
-                        console.log(err);
+                        //console.log(err.message);
                         return {
-                            status: 400,
+                            status: 500,
                             message: 'Failed to fetch, possible to high peak request!'
                         };
                     });
@@ -197,13 +201,14 @@
                 },
 
                 generateArticle: function (context, index) {
-                    var articlePrompt = "Buat artikel minimal 5 paragraf menggunakan konteks topik di bawah ini : \n\n" + context + "\n\nTambahkan juga judul artikel sebagai heading";
-                    //console.log(articlePrompt);
+                    context = context.replace(/[\r\n]/gm, '');
+                    var articlePrompt = "Buat artikel dengan minimal 5 paragraf lengkap dengan judul artikel sebagai heading menggunakan konteks topik berikut ini : \"" + context + "\"";
+                    console.log(articlePrompt);
                     loadModal.toggle();
-                    this.sendPayload(articlePrompt, 5000)
+                    this.sendPayload(articlePrompt, 3000)
                         .then((response) => {
+                            //console.log(response);
                             if (response.status == 200) {
-                                //console.log(response);
                                 document.getElementById("article" + index).innerHTML = '<hr class="my-3" />' + (response.message).split("\n\n").join("<br /><br />");
                             } else {
                                 document.getElementById("article" + index).innerHTML = '<hr class="my-3" />ERROR : ' + response.message;
@@ -212,6 +217,8 @@
                         });
                 }
             }
+
+            chatGPT.initGenerateArticleBtn();
         })();
     </script>
 </body>
