@@ -1,3 +1,4 @@
+
 <html lang="en">
 
 <head>
@@ -24,7 +25,7 @@
                 <div class="input-group">
                     <input type="text" id="tPrompt" class="form-control"
                         placeholder="Buat pertanyaan untuk membuat list konteks"
-                        value="Buatkan 3 paragraf dengan nomor urut tentang tokoh-tokoh penemu terkemuka dunia"
+                        value="Buatkan 5 kalimat dengan nomor urut tentang tokoh-tokoh penemu terkemuka dunia"
                         aria-label="Ask your question">
                     <button class="btn btn-outline-primary" type="button" id="bSubmit">Generate</button>
                 </div>
@@ -43,11 +44,11 @@
             <div class="col">
                 <h2>Hasil konteks</h2>
                 <hr>
-
+                
                 <div class="accordion" id="accordionResult">
 
                 </div>
-
+                
             </div>
         </div>
     </div>
@@ -96,7 +97,7 @@
             const loadModal = new bootstrap.Modal('#staticLoading', {
                 keyboard: false
             });
-
+            
             var bSubmit = document.getElementById("bSubmit");
             bSubmit.addEventListener("click", () => {
                 chatGPT.getKeyword();
@@ -112,13 +113,17 @@
                     document.getElementById("accordionResult").innerHTML = "";
 
                     let prompt = document.getElementById("tPrompt").value;
+                    //prompt += ". Tampilkan hasilnya dalam format json.";
+
                     this.sendPayload(prompt, 1000)
                         .then((response) => {
-                            //console.log(response);
+                            console.log(response.message);
                             if (response.status == '200') {
-                                var list = (response.message).split("\n\n");
+                                var list = (response.message).split("\n");
+                                //var list = JSON.parse(response.message);
                                 console.log(list);
                                 //console.log(JSON.stringify(list));
+                                //this.templateReplace(list);
                                 this.templateReplace(list.filter(n => n));
                             } else {
                                 console.log(response.message);
@@ -129,7 +134,7 @@
                         });
 
                 },
-
+                
                 sendPayload: async function (prompt, token) {
                     var payload = {
                         question: prompt,
@@ -137,7 +142,7 @@
                     };
                     console.log('EXECUTING COMMAND : ', payload);
                     console.log('Processing....')
-
+                    
                     return await fetch(this.apiEndpoin, {
                         method: 'post',
                         cache: 'no-cache',
@@ -170,17 +175,19 @@
                     var template = document.getElementById("accordionItem").innerHTML;
 
                     items.forEach((value, index, array) => {
-                        //console.log(index, value);
-                        //console.log(template);
-                        let item = this.strReplace(template, "##num##", index);
-                        //console.log(item);
-                        item = this.strReplace(item, "##text##", value);
+                        if(value.length > 5){
+                            //console.log(index, value);
+                            //console.log(template);
+                            let item = this.strReplace(template, "##num##", index);
+                            //console.log(item);
+                            item = this.strReplace(item, "##text##", value);
 
-                        //console.log(item);
-                        var newNode = document.createElement("div")
-                        newNode.className = 'accordion-item';
-                        newNode.innerHTML = item;
-                        document.getElementById('accordionResult').appendChild(newNode);
+                            //console.log(item);
+                            var newNode = document.createElement("div")
+                            newNode.className = 'accordion-item';
+                            newNode.innerHTML = item;
+                            document.getElementById('accordionResult').appendChild(newNode);
+                        }
                     });
 
                     this.initGenerateArticleBtn();
@@ -201,6 +208,7 @@
                 },
 
                 generateArticle: function (context, index) {
+                    context = context.replace(/[0-9]\. /g,'');
                     context = context.replace(/[\r\n]/gm, '');
                     var articlePrompt = "Buat artikel dengan minimal 5 paragraf lengkap dengan judul artikel sebagai heading menggunakan konteks topik berikut ini : \"" + context + "\"";
                     console.log(articlePrompt);
